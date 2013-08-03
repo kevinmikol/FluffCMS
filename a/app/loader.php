@@ -22,7 +22,7 @@ class load{
 		$page_count = $load_page->rowCount();
 		$currentpage = $load_page->fetch(PDO::FETCH_OBJ);
 		
-		if($page_count == 0 && $url !== "404"){echo '<meta http-equiv="refresh" content="0; url='.$baseurl.'/404">';}
+		if($page_count == 0 && $url !== "404"){echo '<meta http-equiv="refresh" content="0; url='.$baseurl.'/404">';die;}
 
 		$currentpage->sitetitle = $currentpage->title.' &#183; '.$sitetitle;
 		return $currentpage;
