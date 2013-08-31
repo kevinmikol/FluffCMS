@@ -97,7 +97,6 @@ if(!isset($page)){
     <link href="plugins/notify/bootstrap-notify.css" rel="stylesheet">
     <link href="plugins/notify/alert-notification-animations.css" rel="stylesheet">
 
-<!--
 	<script src="https://www.google.com/jsapi"></script>
 	<script src="plugins/google/gadash.js"></script>
 	<script src="https://apis.google.com/js/client.js?onload=gadashInit"></script>
@@ -107,7 +106,6 @@ if(!isset($page)){
 		var CLIENT_ID = '<?=$clientid; ?>';
 	</script>
 	<script src="plugins/google/scripts.js"></script>
--->
 
 	<script>
 		var first = "<?=$activepage?>";
