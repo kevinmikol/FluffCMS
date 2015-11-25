@@ -12,6 +12,7 @@ if(!isset($page)){
 }else{
 	$activepage = $page;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +25,7 @@ if(!isset($page)){
 
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
   </head>
 
   <body > <!--data-spy="scroll"-->

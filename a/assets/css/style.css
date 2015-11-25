@@ -1,0 +1,33 @@
+.loading {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.8);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.loading .loader {
+background: url('../img/loading.gif') rgba(0, 0, 0, 0.8) no-repeat center;
+height:48px;
+width:48px;
+padding: 15px 25px 15px 25px;
+border-radius: 20px;
+top: 50%;
+left: 50%;
+margin-left:-48px;
+margin-top:-48px;
+position:absolute;
+}
+
+.loader {
+background: url('../img/loader.gif') no-repeat center;
+background-size:100% 100%;
+height:32px;
+width:32px;
+margin:0 auto;
+vertical-align:center;
+}
+
+a{color:rgb(240, 150, 140);-webkit-transition: all 0.2s linear; -moz-transition: all 0.2s linear; -o-transition: all 0.2s linear; transition: all 0.2s linear;}
+a:hover{color:rgb(238, 104, 89);text-decoration:none;}

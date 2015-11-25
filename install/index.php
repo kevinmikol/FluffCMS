@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="/system/admin/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../a/assets/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 40px;
@@ -43,7 +43,6 @@
       }
 
     </style>
-    <link href="/system/admin/assets/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -56,7 +55,7 @@
     <div class="container">
 
       <form class="form-setup form-inline" method="post" action="actions.php">
-        <img src="/system/admin/assets/img/logo.png" width="500" /><h2 style="text-align:center;margin-bottom:40px;" class="form-setup-heading muted">System Installation</h2>
+        <img src="../a/assets/img/logo.png" width="500" /><h2 style="text-align:center;margin-bottom:40px;" class="form-setup-heading muted">System Installation</h2>
         <hr />
         <h3 class="muted">Database Information</h3>
         <div class="row-fluid">
@@ -76,15 +75,15 @@
         </div>
         <h3 class="muted">Admin Information</h3>
         <div class="row-fluid">
-	        <input type="text" class="input-block-level span12" placeholder="Administrator's Name">
+	        <input type="text" class="input-block-level span12" placeholder="Administrator's Name" name="admin_name">
         	<div class="controls controls-row">
-	        	<input required type="text" class="input-block-level span6" placeholder="Admin Username">
-	        	<input required type="password" class="input-block-level span6" placeholder="Admin Password">
+	        	<input required type="text" class="input-block-level span6" placeholder="Admin Username" name="admin_username">
+	        	<input required type="password" class="input-block-level span6" placeholder="Admin Password" name="admin_password">
         	</div>
         </div>
         <h3 class="muted">SALT Key - Security Key</h3>
 		<div class="input-append">
-		  <input required class="saltkey" id="appendedInputButton" type="text">
+		  <input required class="saltkey" id="appendedInputButton" type="text" name="salt">
 		  <button class="btn gensalt" type="button">Generate New</button>
 		</div>
         <button class="btn btn-large btn-primary pull-right" type="submit">Install</button>
@@ -95,8 +94,9 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/system/admin/assets/js/boostrap.js"></script>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../a/assets/js/bootstrap.js"></script>
+    
     <script>
 	function randomString(len) {
 		  // Just an array of the characters we want in our random string
