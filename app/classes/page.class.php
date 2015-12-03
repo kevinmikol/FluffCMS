@@ -1,7 +1,7 @@
 <?php
-class load{
+class page{
 	function init(){
-		global $db, $sitetitle;
+		global $db, $sitetitle, $baseurl;
 		
 		//Get URL and Know the Currrent Page
         $request = parse_url($_SERVER['REQUEST_URI']);
@@ -22,61 +22,12 @@ class load{
 		$page_count = $load_page->rowCount();
 		$currentpage = $load_page->fetch(PDO::FETCH_OBJ);
 		
-		if($page_count == 0 && $url !== "404"){echo '<meta http-equiv="refresh" content="0; url='.$baseurl.'/404">';die;}
+		if($page_count == 0 && $url !== "404"){echo '<meta http-equiv="refresh" content="0; url='.$baseurl.'404">';die;}
 
 		$currentpage->sitetitle = $currentpage->title.' &#183; '.$sitetitle;
+        
 		return $currentpage;
 	}
-    function content(){
-		global $db, $currentpage;
-
-		//Load from Database
-		$load_page = $db->prepare("SELECT * FROM cms_pages WHERE url = :url LIMIT 1");
-		$load_page->bindParam(':url', $currentpage->url);
-		$load_page->execute();
-		$pagearray = $load_page->fetchAll();
-		
-		//Show Data
-		foreach($pagearray as $page){
-				echo $page['content'];
-		}
-    }
-    function page($page){
-		global $db, $title;
-
-		//Load from Database
-		$load_page = $db->prepare("SELECT * FROM cms_pages WHERE id = :id LIMIT 1");
-		$load_page->bindParam(':id', $page);
-		$load_page->execute();
-		$page_count = $load_page->rowCount();
-		$pagearray = $load_page->fetchAll();
-		
-		if($page_count == 0 && $page !== "404"){echo '<meta http-equiv="refresh" content="0; url='.$baseurl.'/404">';}
-		
-		//Show Data
-		foreach($pagearray as $page){
-				echo '<script>document.title = "'.$page['title'].' - '.$title.'";</script>';
-				echo "<page id='".$page['id']."'>";
-				echo $page['content'];
-				echo "</page>";
-		}
-    }
-	function block($id){
-		global $db;
-		
-		//Load from Database
-		$load_block = $db->prepare("SELECT * FROM cms_blocks WHERE id = :id LIMIT 1");
-		$load_block->bindParam(':id', $id);
-		$load_block->execute();
-		$load_block = $load_block->fetchAll();
-		
-		//Show Data
-		foreach($load_block as $block){
-				echo "<div id='block-".$block['id']."'>";
-				echo $block['content'];
-				echo "</div>";
-		}
-    }
     function navigation(){
 		global $db;
 
@@ -101,7 +52,7 @@ class load{
 			        $refs[ $data['parent_id'] ]['children'][ $data['item_id'] ] = &$thisref;
 			    }
 			}
-			function create_list( $arr ){
+			function create_list($arr){
 			$html = "\n<ul>\n";
 			    foreach ($arr as $key=>$v) {
 			        $html .= '<li data-id="'.$v['item_id'].'"><a '.$v['attr'].' href="'.$v['url'].'" target="'.$v['target'].'">'.$v['text'].'</a>';
@@ -114,8 +65,7 @@ class load{
 			    $html .= "</ul>\n";
 			    return $html;
 			}
-			echo create_list( $list );
+			return create_list($list);
     }
-    
 }
 ?>

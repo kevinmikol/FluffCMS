@@ -2,12 +2,15 @@
 session_start();
 
 require($_SERVER['DOCUMENT_ROOT'].'/config.php');
-require('loader.php');
+require('classes/loader.class.php');
 
 //Set Database
 $db = new PDO("mysql:dbname=$dbname;host=$dbhost", $dbuser, $dbpass);
 
-$load = new load();
+$load = new loader();
 
-$currentpage = $load->init();
+$Page = $load->module('page');
+$Block = $load->module('block');
+
+$currentpage = $Page->init();
 ?>

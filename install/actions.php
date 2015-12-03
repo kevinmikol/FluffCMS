@@ -48,6 +48,10 @@ $stringData = '$'.'salt = "'.$_POST['salt'].'";';
 echo "Write salt: ".addslashes($_POST['salt'])."<br />";
 fwrite($fileHandle, $stringData."\n");
 
+$stringData = '?>';
+echo "End file.";
+fwrite($fileHandle, $stringData."\n");
+
 fclose($fileHandle);
 
 require($configFile);
