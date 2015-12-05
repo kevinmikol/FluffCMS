@@ -2,8 +2,7 @@
 class load{
     function page(){
 	global $db, $user_name, $user_role, $user_username, $user_id, $baseurl;
-		foreach (glob("includes/pages/*.php") as $filename)
-		{
+		foreach (glob("includes/pages/*.php") as $filename){
 			$strip = array("includes/pages/", ".php");
 			$clean = str_replace($strip, "", $filename);
 			$divn = $clean;
@@ -15,8 +14,7 @@ class load{
 	}
 	 function modal(){
 	  global $db, $user_name, $user_role, $user_username, $user_id, $baseurl;
-		foreach (glob("includes/modals/*.php") as $filename)
-		{
+		foreach (glob("includes/modals/*.php") as $filename){
 			$strip = array("includes/modals/", ".php");
 			$clean = str_replace($strip, "", $filename);
 			$divn = $clean;

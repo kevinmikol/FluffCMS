@@ -1,10 +1,11 @@
 <?
 class page{
-	function create($title, $url, $content, $cb){
+	function create($title, $url, $template, $content, $cb){
 		global $db;
-		$create_page = $db->prepare("INSERT INTO cms_pages (title, url, content, cb) VALUES (:title, :url, :content, :cb)");
+		$create_page = $db->prepare("INSERT INTO cms_pages (title, url, template, content, cb) VALUES (:title, :url, :template, :content, :cb)");
 		$create_page->bindParam(':title', $title);
 		$create_page->bindParam(':url', $url);
+        $create_page->bindParam(':template', $template);
 		$create_page->bindParam(':content', $content);
 		$create_page->bindParam(':cb', $cb);
 		$create_page->execute();

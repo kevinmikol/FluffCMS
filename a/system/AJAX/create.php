@@ -8,7 +8,7 @@ if($type=="" OR $type==NULL){
 }else if($type=="page"){
 	require('../classes/page.class.php');
 	$page = new page();
-	$page->create($_POST['title'], $_POST['url'], $_POST['content'], $_POST['cb']);
+	$page->create($_POST['title'], $_POST['url'], $_POST['template'], $_POST['content'], $_POST['cb']);
 	$title = $_POST['title'];
 	?>
 		<script>

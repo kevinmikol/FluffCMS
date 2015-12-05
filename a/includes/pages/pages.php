@@ -12,6 +12,12 @@
 						<form class="create" data-type="page">
 								<label for='title'>Title</label>
 								  <input required type='text' id='title' name='title' placeholder='Title'>
+                                <label for='title'>Template</label>
+								    <select required id='template' name='template' placeholder='Title'>
+                                        <?php foreach(glob($_SERVER['DOCUMENT_ROOT'].'/templates/*') as $template){  
+                                            echo "<option>" . pathinfo($template, PATHINFO_FILENAME) . "</option>";      
+                                        } ?>
+                                    </select>
 								<label for='url'>Page URL</label>
 								<div class='controls input-prepend'>
 									<span class="add-on"><? echo $baseurl; ?></span>
@@ -49,7 +55,7 @@
 					echo "</td><td>"; 
 					echo $info['url'];
 					echo "</td><td>"; 
-					echo $info['title'];
+					echo $info['title']." <small class='label'>".$info['template']."</small>";
 					echo "</td><td>"; 
 					echo $info['cb'];
 					echo "</td><td>"; 					

@@ -78,9 +78,11 @@ if(!isset($page)){
       <hr>
 
 <footer>
-      <div class="pull-left">
-        <p class="muted credit">&copy;<?=date(Y)?> FluffCMS. All rights reserved. - Made by <a href="http://kevinmikol.com" target="_blank">Kevin Mikolajczak</a> <br /> Special thanks to Evan Tobin, Oliver Grassmann, and Joel Glovacki</p>
-      </div>
+        <div class="container">
+            <div class="pull-left">
+                <p class="muted credit">&copy;<?=date(Y)?> FluffCMS. All rights reserved. - Created by <a href="http://kevinmikol.com" target="_blank">Kevin Mikolajczak</a>
+            </div>
+        </div>    
 </footer>
 
     </div>

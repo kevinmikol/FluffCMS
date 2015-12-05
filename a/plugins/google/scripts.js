@@ -1,4 +1,3 @@
-
 //Google Anayal API
 	gadash.configKeys({
       'apiKey': API_KEY,

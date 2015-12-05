@@ -27,7 +27,7 @@
 					<tr>
 						<th>Block ID</th>
 						<th>Title</th>
-						<? if($user_role > 3){ ?><th>Usage Code</th><? } ?>
+						<? if($user_role > 3){ ?><th>Object Usage Code</th><? } ?>
 						<th>Actions</th>
 						<th></th>
 					</tr>
@@ -41,10 +41,10 @@
 						echo $info['id'];
 						echo "</td><td>";
 						echo $info['title'];
-						echo "</td><td>"; 
+						echo "</td><td>";
 						if($user_role > 3){
-							echo '<input required type="text" readonly value="<? $load->block('.$info['id'].') ?>" />';
-							echo "</td><td>"; 		
+							echo '<input type="text" readonly value="$Block->load('.$info['id'].');" />';
+                            echo "</td><td>";	
 						}			
 						?><button class="btn btn-warning" onClick="edit('block', '<?=$info['id']?>')"><i class="icon-edit"></i> Edit</button>
 						<? if($user_role > 2){ ?><a href="#deleteModal" role="button" class="btn deleteButton btn-danger" data-toggle="modal" data-type="block" data-id="<?=$info['id']?>" data-title="<?=$info['title']?>"><i class="icon-trash"></i> Delete</a><? } ?>
