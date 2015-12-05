@@ -1,12 +1,3 @@
-<?
-  $bg = array(          $baseurl.'assets/img/bg/1.jpg', $baseurl.'assets/img/bg/2.jpg', $baseurl.'assets/img/bg/3.jpg', $baseurl.'assets/img/bg/4.jpg',
-						$baseurl.'assets/img/bg/5.jpg', $baseurl.'assets/img/bg/6.jpg', $baseurl.'assets/img/bg/7.jpg', $baseurl.'assets/img/bg/8.jpg',
-						$baseurl.'assets/img/bg/9.jpg', $baseurl.'assets/img/bg/10.jpg', $baseurl.'assets/img/bg/11.jpg', $baseurl.'assets/img/bg/12.jpg',
-						$baseurl.'assets/img/bg/13.jpg'  ); // array of filenames
-
-  $i = rand(0, count($bg)-1); // generate random number size of the array
-  $selectedBg = "$bg[$i]"; // set variable equal to which random filename was chosen
-  ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -27,7 +18,7 @@
 html{
 	height:100%;
 	width:100%;
-	background: black url('<?php echo $selectedBg ?>') no-repeat center center fixed; 
+	background: black url('https://unsplash.it/1200/1000/?random') no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -61,7 +52,6 @@ html{
     <script src="assets/js/bootstrap.js"></script>
 
 	<script type="text/javascript" src="assets/js/login.js"></script>
-
 
 </body>
 </html>

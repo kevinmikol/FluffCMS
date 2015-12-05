@@ -61,9 +61,10 @@ if(!isset($page)){
 			<? } ?>
             <ul class="nav loaders">
               <li page="dashboard"><a><i class="icon-dashboard"></i> Dashboard</a></li>
-              <? if($user_role > 1){ ?><li page="pages"><a><i class="icon-file-text-alt"></i> Pages</a></li> <? } ?>
-              <? if($user_role > 3){ ?><li page="navigation"><a><i class="icon-road"></i> Navigation</a></li> <? } ?>
-             <? if($user_role > 1){ ?> <li page="blocks"><a><i class="icon-puzzle-piece"></i> Blocks</a></li> <? } ?>
+                <? if($user_role > 0){ ?> <li page="posts"><a><i class="icon-pencil"></i> Posts</a></li> <? } ?>
+                <? if($user_role > 1){ ?><li page="pages"><a><i class="icon-file-text-alt"></i> Pages</a></li> <? } ?>
+                <? if($user_role > 3){ ?><li page="navigation"><a><i class="icon-road"></i> Navigation</a></li> <? } ?>
+                <? if($user_role > 1){ ?> <li page="blocks"><a><i class="icon-puzzle-piece"></i> Blocks</a></li> <? } ?>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

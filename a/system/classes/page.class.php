@@ -15,7 +15,8 @@ class page{
 		$edit_page = $db->prepare("SELECT * FROM cms_pages WHERE id = :id");
 		$edit_page->bindParam(':id', $id);
 		$edit_page->execute();
-		$array = $edit_page->fetch(PDO::FETCH_OBJ);		echo json_encode($array);
+		$array = $edit_page->fetch(PDO::FETCH_OBJ);
+        echo json_encode($array);
 	}
 	function update($title, $url, $content, $id){
 		global $db;

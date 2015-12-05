@@ -140,6 +140,10 @@ function editpop(vtype, data){
 		}
 		$('#editModal').modal('show');
 	}
+    //Posts
+	if(vtype == "post"){
+		//todo
+	}
 }
 
 

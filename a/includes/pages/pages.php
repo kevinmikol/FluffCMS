@@ -25,7 +25,7 @@
 								</div>
 								<label for='content'>Content</label>
 								  <textarea class="ckeditor" id="pagecontent" name="content"></textarea>
-							  <input type='hidden' id='cb' name='cb' value="<?=$user_name; ?>" />
+							  <input type='hidden' id='cb' name='cb' value="<?=$user_id; ?>" />
 							  <input type='hidden' id='type' name='type' value="page" />
 							  <br/>
 							  <br/>
@@ -58,7 +58,7 @@
 					echo $info['title']." <small class='label'>".$info['template']."</small>";
 					echo "</td><td>"; 
 					echo $info['cb'];
-					echo "</td><td>"; 					
+					echo "</td><td>";
 					?><a class="btn btn-info" href="<?=$baseurl.$info['url'];?>" target="_blank"><i class="icon-external-link"></i> View</a>
 					<button class="btn btn-warning" onClick="edit('page', '<?=$info['id']?>')"><i class="icon-edit"></i> Edit</button>
 					<? if($user_role > 2){ ?><a href="#deleteModal" role="button" class="btn deleteButton btn-danger" data-toggle="modal" data-type="page" data-id="<?=$info['id']?>" data-title="<?=$info['title']?>"><i class="icon-trash"></i> Delete</a><? } ?>

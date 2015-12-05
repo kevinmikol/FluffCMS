@@ -84,6 +84,11 @@
 				<input type='hidden' name='id' class='id' />
 			</form>
 			<!--End NAVIGATION Editor-->
+            <!--Start POST Editor-->
+			<form id="update" class="post">
+				n/a
+			</form>
+			<!--End PAGE Editor-->
 	  </div>
 	  <div class="modal-footer">
 		<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
