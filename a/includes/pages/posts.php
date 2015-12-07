@@ -27,7 +27,7 @@
                             <?  } ?>
                             </select>
                             <label for='content'>Content</label>
-                              <textarea class="ckeditor" id="pagecontent" name="content"></textarea>
+                              <textarea class="ckeditor" id="postcontent" name="content"></textarea>
                              <input type='hidden' id='type' name='type' value="post" />
                           <br/>
                           <br/>

@@ -2,7 +2,7 @@
 class page{
 	function create($title, $url, $template, $content, $cb){
 		global $db;
-		$create_page = $db->prepare("INSERT INTO cms_pages (title, url, template, content, cb) VALUES (:title, :url, :template, :content, :cb)");
+		$create_page = $db->prepare("INSERT INTO cms_pages (title, url, template, content, cb, created) VALUES (:title, :url, :template, :content, :cb, now())");
 		$create_page->bindParam(':title', $title);
 		$create_page->bindParam(':url', $url);
         $create_page->bindParam(':template', $template);

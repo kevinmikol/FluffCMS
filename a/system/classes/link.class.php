@@ -2,7 +2,7 @@
 class link{
 	function create($text, $url, $target, $linktype, $attr){
 		global $db;
-		$link_create = $db->prepare("INSERT INTO cms_navigation (url,text,target,type,attr) VALUES (:url,:text,:target,:type,:attr)");
+		$link_create = $db->prepare("INSERT INTO cms_navigation (url,text,target,type,attr,created) VALUES (:url,:text,:target,:type,:attr,now())");
 		$link_create->bindParam(':text', $text);
 		$link_create->bindParam(':url', $url);
 		$link_create->bindParam(':target', $target);

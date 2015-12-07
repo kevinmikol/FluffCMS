@@ -1,5 +1,7 @@
-<?php require('app/common.php');
+<?php
 
-require('templates/'.$currentpage->template.".php");
+    require('app/loader.php');
+    
+    require('templates/'.$CurrentPage->template.".php");
 
 ?>

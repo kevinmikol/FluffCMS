@@ -3,7 +3,7 @@ class user{
 	function create($name, $username, $role, $pw){
 		global $db, $salt;
 		$enpass = crypt($pw,$salt);
-		$create_user = $db->prepare("INSERT INTO cms_users (name, username, role, password) VALUES (:name, :username, :role, :password)");
+		$create_user = $db->prepare("INSERT INTO cms_users (name, username, role, password, created) VALUES (:name, :username, :role, :password, now())");
 		$create_user->bindParam(':name', $name);
 		$create_user->bindParam(':username', $username);
 		$create_user->bindParam(':role', $role);
