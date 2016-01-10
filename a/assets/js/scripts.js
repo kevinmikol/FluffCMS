@@ -1,8 +1,16 @@
-$(document).ready(function() {
+$(document).ready(function(){
+    
+    $('.wysiwyg').summernote({
+        height: 400,
+        minHeight: null,
+        maxHeight: null,
+        focus: true
+    });
+    
 	$('#'+first).fadeIn();
 	$('.loaders li[page='+first+']').addClass("active");
 	document.title = 'FluffCMS';
-	$(".loading").fadeOut();
+	$(".loader").fadeOut();
 	
 	//Active Classes and Loaders
 	$('.loaders li').click(function() {
@@ -15,8 +23,8 @@ $(document).ready(function() {
 		
 		document.title = title+' | FluffCMS';
 		
-		$(".container-fluid").children("section").fadeOut();
-		$("#"+page).fadeIn();
+		$(".container").children("section").fadeOut();
+        $("#"+page).delay(500).fadeIn();
 	});
 	
 	$('#tabs a').click(function (e) {
@@ -28,7 +36,7 @@ $(document).ready(function() {
 });
 
 //Create Functions	
-$("form.create").submit( function () {   
+$("form.create").submit(function(){   
 	var type = $(this).attr("data-type");
 	if(type == "page" || type == "block"){
 		CKEDITOR.instances[type+'content'].updateElement(); 
@@ -142,7 +150,12 @@ function editpop(vtype, data){
 	}
     //Posts
 	if(vtype == "post"){
-		//todo
+		$('#editModal .title').html(data['title']);
+		$('#editModal #title').attr('value', data['title']);
+		$('#editModal #url').attr('value', data['url']);
+		$('#editModal #id').attr('value', data['id']);
+		CKEDITOR.instances['postedit'].setData(data['content']);
+		$('#editModal').modal('show');
 	}
 }
 

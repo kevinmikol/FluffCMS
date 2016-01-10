@@ -1,33 +1,44 @@
-.loading {
+.loader {
     position: fixed;
-    background: rgba(0, 0, 0, 0.8);
+    background: #fff;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 500;
 }
 
-.loading .loader {
-background: url('../img/loading.gif') rgba(0, 0, 0, 0.8) no-repeat center;
-height:48px;
-width:48px;
-padding: 15px 25px 15px 25px;
-border-radius: 20px;
-top: 50%;
-left: 50%;
-margin-left:-48px;
-margin-top:-48px;
-position:absolute;
-}
-
-.loader {
-background: url('../img/loader.gif') no-repeat center;
-background-size:100% 100%;
-height:32px;
-width:32px;
-margin:0 auto;
-vertical-align:center;
+.loader img{
+	width:300px;
+	height:300px;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px;
+	margin-left: -150px;
+	position: fixed;
 }
 
 a{color:rgb(240, 150, 140);-webkit-transition: all 0.2s linear; -moz-transition: all 0.2s linear; -o-transition: all 0.2s linear; transition: all 0.2s linear;}
 a:hover{color:rgb(238, 104, 89);text-decoration:none;}
+
+section{
+    padding:20px 0;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 60px;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #f5f5f5;
+    padding: 20px 0;
+}
