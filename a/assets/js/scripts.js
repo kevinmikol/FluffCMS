@@ -87,9 +87,6 @@ function edit(vtype, vid){
 
 
 function editpop(vtype, data){
-	//Clear Instances
-	//CKEDITOR.instances['pageedit'].setData('');
-
 	//Set Common
 	var ctype = vtype.charAt(0).toUpperCase() + vtype.slice(1);
 	$('#editModal .type').html(ctype);
@@ -99,20 +96,18 @@ function editpop(vtype, data){
 	
 	//Pages
 	if(vtype == "page"){
-		$('#editModal .title').html(data['title']);
-		$('#editModal #title').attr('value', data['title']);
-		$('#editModal #url').attr('value', data['url']);
-		$('#editModal #id').attr('value', data['id']);
-		CKEDITOR.instances['pageedit'].setData(data['content']);
-		$('#editModal').modal('show');
+		$('#editModal #title').val(data['title']);
+		$('#editModal #url').val(data['url']);
+		$('#editModal #id').val(data['id']);
+        $('#editModal #template').val(data['template']);
+		$('#editModal #content.wysiwyg').summernote('code', data['content']);
 	}
 	//Blocks
 	if(vtype == "block"){
 		$('#editModal .title').html(data['title']);
 		$('#editModal #title').attr('value', data['title']);
 		$('#editModal #id').attr('value', data['id']);
-		CKEDITOR.instances['blockedit'].setData(data['content']);
-		$('#editModal').modal('show');
+		$('#editModal #blockedit .wysiwyg').html(data['content']);
 	}
 	//Users
 	if(vtype == "user"){
@@ -122,7 +117,6 @@ function editpop(vtype, data){
 		$('#editModal #role').val(data['role']);
 		//$('#editModal #password').attr('value', data['password']);
 		$('#editModal #id').attr('value', data['id']);
-		$('#editModal').modal('show');
 	}
 	//Nav
 	if(vtype == "navigation"){
@@ -146,7 +140,6 @@ function editpop(vtype, data){
 			$('#editModal .linkurl').addClass('navurl').attr('pattern', '[^!@#$%&*()|{}.,<> ]*');
 			$('#editModal .navaddurl .add-on').css('display', 'inline-block');
 		}
-		$('#editModal').modal('show');
 	}
     //Posts
 	if(vtype == "post"){
@@ -154,9 +147,10 @@ function editpop(vtype, data){
 		$('#editModal #title').attr('value', data['title']);
 		$('#editModal #url').attr('value', data['url']);
 		$('#editModal #id').attr('value', data['id']);
-		CKEDITOR.instances['postedit'].setData(data['content']);
-		$('#editModal').modal('show');
+		$('#editModal #poseedit .wysiwyg').html(data['content']);
 	}
+    
+    $('#editModal').modal('show');
 }
 
 
@@ -238,6 +232,32 @@ $(document).ready(function(){
 		}
 	});
 });
+
 $(document).on("click", ".navitemedit", function () {
 	edit('navigation', $(this).attr('data-id'));
-})
+});
+
+//image upload
+function readURL(input, target){
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            target.attr('src', e.target.result);
+            target.parent().find('.btn-upload').fadeOut(function(){
+                target.fadeIn();
+            });
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$(".theImage").change(function(){
+    readURL(this, $('#'+$(this).data('target')));
+});
+
+$('.btn-upload').click(function(e){
+    e.preventDefault();
+    $(this).parent().find('input[type=file]').click();
+});

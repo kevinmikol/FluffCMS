@@ -13,7 +13,7 @@
                             <div class="row">
                                 <div class="col-md-9">
                                     <div class="form-group">
-                                        <input required class="form-control input-lg" type="text" placeholder="page title">
+                                        <input required class="form-control input-lg" type="text" placeholder="page title" name="title">
                                     </div>
                                     <div class="form-group">
                                         <div class="form-control wysiwyg"></div>
@@ -35,7 +35,16 @@
                                             } ?>
                                         </select>
                                     </div>
-                                    <button type='submit' class='btn btn-success btn-lg pull-right'><i class="icon-plus-sign"></i> Create Page</button>
+                                    <div class="form-group">
+                                        <label for='featuredImage'>Featured Image</label>
+                                        <div class="image-box">
+                                            <img id="newPagePreview" src="#" alt="your image">
+                                            <input type='file' class="theImage" data-target="newPagePreview" style="display:none;" name="featuredImage"/>
+                                            <a class="btn btn-info btn-upload">Upload Image</a>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <button type='submit' class='btn btn-success btn-lg pull-right'><i class="fa fa-plus-circle"></i> Create Page</button>
                                 </div>
                             </div>
                           <input type='hidden' id='cb' name='cb' value="<?=$user_id;

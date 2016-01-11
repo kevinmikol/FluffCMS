@@ -7,11 +7,9 @@ $id = $_GET['id'];
 if($type=="" OR $type==NULL){
 	die;
 }else if($type=="page"){
-
 	require('../classes/page.class.php');
 	$page = new page();
 	$page->edit($_GET['id']);
-
 }else if($type=="block"){
 
 	require('../classes/block.class.php');
