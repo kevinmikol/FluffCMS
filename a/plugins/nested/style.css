@@ -1,61 +1,65 @@
-		ol {
-			margin: 0;
-			padding: 0;
-			padding-left: 30px;
-		}
+ol {
+    margin: 0;
+    padding: 0;
+    padding-left: 30px;
+}
 
-		ol.navigationEdit, ol.navigationEdit ol {
-			margin: 0 0 0 25px;
-			padding: 0;
-			list-style-type: none;
-		}
+ol.navigationEdit, ol.navigationEdit ol {
+    margin: 0 0 0 25px;
+    padding: 0;
+    list-style-type: none;
+}
 
-		ol.navigationEdit {
-			margin: 4em 0;
-		}
+ol.navigationEdit {
+    margin: 4em 0;
+}
 
-		.navigationEdit li {
-			margin: 5px 0 0 0;
-			padding: 0;
-		}
+.navigationEdit li {
+    margin: 5px 0 0 0;
+    padding: 0;
+}
 
-		.navigationEdit li div  {
-			border: 1px solid #D8D8D8;
-			-webkit-border-radius: 3px;
-			-moz-border-radius: 3px;
-			border-radius: 3px;
-			padding: 8px 14px;
-			cursor: move;
-			background: #f6f6f6;
-			font-size: 16px;
-		}
+.navigationEdit li div  {
+    border: 1px solid #D8D8D8;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 8px 14px;
+    cursor: move;
+    background: #f6f6f6;
+    font-size: 16px;
+}
 
-		.disclose {
-			cursor: pointer;
-			width: 10px;
-			display: none;
-		}
+.navigationEdit li div a{
+    cursor: pointer;
+}
 
-		.navigationEdit li.mjs-nestednavigationEdit-collapsed > ol {
-			display: none;
-		}
+.disclose {
+    cursor: pointer;
+    width: 10px;
+    display: none;
+}
 
-		.navigationEdit li.mjs-nestednavigationEdit-branch > div > .disclose {
-			display: inline-block;
-		}
+.navigationEdit li.mjs-nestednavigationEdit-collapsed > ol {
+    display: none;
+}
 
-		.navigationEdit li.mjs-nestednavigationEdit-collapsed > div > .disclose > span:before {
-			content: '+ ';
-		}
+.navigationEdit li.mjs-nestednavigationEdit-branch > div > .disclose {
+    display: inline-block;
+}
 
-		.navigationEdit li.mjs-nestednavigationEdit-expanded > div > .disclose > span:before {
-			content: '- ';
-		}
-		
-		.placeholder {
-			outline: 1px dashed #ed786a;
-			-webkit-border-radius: 3px;
-			-moz-border-radius: 3px;
-			border-radius: 3px;
-			margin: -1px;
-		}
+.navigationEdit li.mjs-nestednavigationEdit-collapsed > div > .disclose > span:before {
+    content: '+ ';
+}
+
+.navigationEdit li.mjs-nestednavigationEdit-expanded > div > .disclose > span:before {
+    content: '- ';
+}
+
+.placeholder {
+    outline: 1px dashed #ed786a;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: -1px;
+}

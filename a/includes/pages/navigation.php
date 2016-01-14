@@ -50,8 +50,8 @@ function navigation(){
 	    	if($v['type'] == "1"){$ex = '  <i style="color:#49afcd" class="icon-external-link"></i>';}
 	        $html .= '<li id="list_'.$v['item_id'].'" data-url="'.$v['url'].'">
 	        			<div><span>'.$v['text'].'</span>'.$ex.'
-	        				<a style="color:#da4f49" data-id="'.$v['item_id'].'" data-title="'.$v['text'].'" data-type="link" class="deleteButton"><i class="icon-trash pull-right"></i></a>
-	        				<a style="color:#faa732" data-id="'.$v['item_id'].'" class="navitemedit"><i class="icon-edit pull-right"></i></a>
+	        				<a style="color:#da4f49" data-id="'.$v['item_id'].'" data-title="'.$v['text'].'" data-type="link" class="deleteButton"><i class="fa fa-trash pull-right"></i></a>
+	        				<a style="color:#faa732" data-id="'.$v['item_id'].'" class="navitemedit"><i class="fa fa-edit pull-right"></i></a>
 	        			</div>';
 	        if (array_key_exists('children', $v)){
 	            $html .= "";
