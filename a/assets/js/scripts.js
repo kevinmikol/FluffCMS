@@ -183,15 +183,15 @@ $(".navurl").typeahead({
 });
 
 $(document).on("click", ".local", function () {
-	$('.navaddurl').addClass('input-prepend');
+	$('.navaddurl').addClass('input-group');
 	$('.linkurl').addClass('navurl').attr('pattern', '[^!@:#$%&*()|{}.,<> ]*');
-	$('.navaddurl .add-on').css('display', 'inline-block');
+	$('.navaddurl .input-group-addon').css('display', 'table-cell');
 });
 
 $(document).on("click", ".external", function () {
-	  $('.navaddurl').removeClass('input-prepend');
+	  $('.navaddurl').removeClass('input-group');
 	  $('.linkurl').removeClass('navurl').attr('pattern', 'https?://.+');
-	  $('.navaddurl .add-on').css('display', 'none');
+	  $('.navaddurl .input-group-addon').css('display', 'none');
 });
 
 $("form#navadd").submit( function () {   

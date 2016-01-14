@@ -67,54 +67,58 @@ function navigation(){
 	echo create_list($list); 
 }
 ?>
-<div class="row-fluid">
-	<div class="span4 well">
-		<h3>Add Link</h3>
-		<form id="navadd">
-			<label>Link Text</label>
-				<input required type="text" name='text' id="navtext" placeholder="About Us" />
-			<br />
-			<label>Link Type</label>
-			<label class="radio">
-			  <input type="radio" name="linktype" class="local" value="0" checked>
-			  Local Link
-			</label>
-			<label class="radio">
-			  <input type="radio" name="linktype" class="external" value="1">
-			  External Link
-			</label>
-			<br />
-			<label>Link URL</label>
-			<div class='input-prepend navaddurl' style="margin-bottom:20px;">
-				<span class="add-on"><?=$baseurl ?></span>
-				<input required type='text' name='url' id="navurl" class="linkurl navurl span5" placeholder='URL' pattern="[^!@#$%&*():|{}.,<> ]*" autocomplete="off">
-			</div>
-			<label>Target</label>
-			<select required id="target" name="target">
-				<option value="_self">Default</option>
-				<option value="_blank">New Window/Tab</option>
-				<option value="_top">Frame Top</option>
-				<option value="_parent">Frame Parent</option>
-			</select>
-			<br /><br />
-			<label>Attributes</label>
-				<input type="text" name='attr' id="navattr" placeholder='class="icon icon-home" id="about"' />
-			<br />
-			<br />
-			<button type="submit" class="btn btn-info" data-loading-text="adding..."><i class="icon-plus-sign"></i> Add To Menu</button>
-		</form>
-	</div>
-	<div class="span4 offset1">
+<div class="row">
+    <div class="col-md-7">
 		<? navigation(); ?>
 	</div>
-	<div class="offset1 span2 pull-right muted">
-		<p>Drag items to reorder.</p>
-		<div class="well">
-			<h5>Key:</h5>
-			<p><span style="color:#faa732"><i class="icon-edit"></i></span> Edit</p>
-			<p><span style="color:#da4f49"><i class="icon-trash"></i></span> Delete</p>
-			<p><i style="color:#49afcd" class="icon-external-link"></i> External Link</p>
-		</div>
+	<div class="col-md-4 col-md-offset-1">
+        <div class="well">
+            <h3>Add Link</h3>
+            <form id="navadd">
+                <div class="form-group">
+                    <label>Link Text</label>
+                    <input class="form-control" required type="text" name='text' id="navtext" placeholder="About Us" />
+                </div>
+                <div class="form-group">
+                    <label>Link Type</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="linktype" class="local" value="0" checked>
+                        Local Link
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="linktype" class="external" value="1">
+                            External Link
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for='url'>Link URL</label>
+                    <div class="navaddurl input-group">
+                        <div class="input-group-addon"><?=$baseurl?></div>
+                        <input required type='text' id='navurl' name='url' class="form-control linkurl navurl" placeholder='url' pattern="[^!@#$%&*()|{}.,<> ]*" autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Target</label>
+                    <select required id="target" name="target" class="form-control">
+                        <option value="_self">Default</option>
+                        <option value="_blank">New Window/Tab</option>
+                        <option value="_top">Frame Top</option>
+                        <option value="_parent">Frame Parent</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Attributes</label>
+                    <input type="text" name='attr' id="navattr" placeholder='class="icon icon-home" id="about"' class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info" data-loading-text="adding..."><i class="icon-plus-sign"></i> Add To Menu</button>
+                </div>
+            </div>
+		</form>
 	</div>
 </div>
 <? } ?>
