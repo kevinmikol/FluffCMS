@@ -10,14 +10,19 @@
 			<div class="tab-pane" id="blockcreate">
 			 	<section id="blockcreate">
 					<form class="create" data-type="block">
-						<label for='title'>Title</label>
-					 	<input required type='text' id='title' name='title' placeholder='Title'>
-					 	<label for='role'>Content</label>
-						<textarea class="ckeditor" id="blockcontent" name="content"></textarea>
-						<input type='hidden' id='type' name='type' value="block" />
-						<br />
-						<button type='submit' class='btn btn-success pull-right'><i class="icon-plus-sign"></i> Create Block</button>
-					</form>
+						<div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input required class="form-control input-lg" type="text" placeholder="block title" name="title">
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-control wysiwyg"></div>
+                                </div>
+                                <input type='hidden' id='type' name='type' value="block" />
+                                <button type='submit' class='btn btn-lg btn-success pull-right'><i class="fa fa-plus"></i> Create Block</button>
+                            </div>
+                        </div>
+                    </form>
 				</section>
 			</div>
 			<? } ?>
@@ -25,32 +30,31 @@
 				<section id="blocktable">
 					<table class="table table-hover table-striped" id="block-table">
 					<tr>
-						<th>Block ID</th>
+                        <th></th>
 						<th>Title</th>
+                        <th>ID</th>
 						<? if($user_role > 3){ ?><th>Object Usage Code</th><? } ?>
-						<th>Actions</th>
-						<th></th>
+						<th>Last Updated</th>
+                        <th>Created</th>
 					</tr>
 					<?php
 					$blocks = $db->prepare("SELECT * FROM cms_blocks");
 					$blocks->execute();
 					$blocks = $blocks->fetchAll();
 		
-					foreach($blocks as $info){
-						echo "<tr id='".$info['id']."'><td>"; 
-						echo $info['id'];
-						echo "</td><td>";
-						echo $info['title'];
-						echo "</td><td>";
-						if($user_role > 3){
-							echo '<input type="text" readonly value="$Block->load('.$info['id'].');" />';
-                            echo "</td><td>";	
-						}			
-						?><button class="btn btn-warning" onClick="edit('block', '<?=$info['id']?>')"><i class="icon-edit"></i> Edit</button>
-						<? if($user_role > 2){ ?><a href="#deleteModal" role="button" class="btn deleteButton btn-danger" data-toggle="modal" data-type="block" data-id="<?=$info['id']?>" data-title="<?=$info['title']?>"><i class="icon-trash"></i> Delete</a><? } ?>
-						</td>
-					<?} 
-					?>
+					foreach($blocks as $info){?>
+						<tr id="<?=$info['id']?>">
+                            <td>
+                                <button class="btn btn-warning" onClick="edit('block', '<?=$info['id']?>')"><i class="fa fa-edit"></i></button>
+                                <? if($user_role > 2){ ?><a href="#deleteModal" role="button" class="btn deleteButton btn-danger" data-toggle="modal" data-type="block" data-id="<?=$info['id']?>" data-title="<?=$info['title']?>"><i class="fa fa-trash"></i></a><? } ?>
+                            </td>
+                            <td><h4><?=$info['title']?></h4></td>
+                            <td><?=$info['id']?></td>
+                            <? if($user_role > 3){ ?><td><input type="text" readonly value="$Block->load('<?=$info['id']?>');" /></td><? } ?>
+                            <td><?=humanDate($info['updated'])?> <small>by <?=humanName($info['ub']);?></small></td>
+                            <td><?=humanDate($info['created'])?> <small>by <?=humanName($info['cb']);?></small></td>
+                            
+					<? } ?>
 					</table>
 				 </section>
 			</div>

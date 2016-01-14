@@ -43,4 +43,16 @@
         }
     }
 
+    function humanName($id){
+        global $db;
+        $stmt = $db->prepare('SELECT `name` FROM `cms_users` WHERE id = :id');
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $name = $stmt->fetch()[0];
+        if($name == null)
+            return "unknown";
+        else
+            return $name;
+    }
+
 ?>

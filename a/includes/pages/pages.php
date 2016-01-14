@@ -47,8 +47,7 @@
                                     <button type='submit' class='btn btn-success btn-lg pull-right'><i class="fa fa-plus-circle"></i> Create Page</button>
                                 </div>
                             </div>
-                          <input type='hidden' id='cb' name='cb' value="<?=$user_id;
-			?>" />
+                          <input type='hidden' id='cb' name='cb' value="<?=$user_id;?>" />
                           <input type='hidden' id='type' name='type' value="page" />
 				        </form>
 					</section>
@@ -80,8 +79,8 @@
                                 </td>
                                 <td><h4><?=$info['title']?> <small><?=$info['template']?></small></h4></td>
                                 <td><?="/".$info['url']?></td>
-                                <td><?=humanDate($info['updated'])?></td>
-                                <td><?=humanDate($info['created'])?> <small>by <?=$info['cb'];?></small></td>
+                                <td><?=humanDate($info['updated'])?> <small>by <?=humanName($info['ub']);?></small></td>
+                                <td><?=humanDate($info['created'])?> <small>by <?=humanName($info['cb']);?></small></td>
                             </tr>
                         <?php } ?>
                         </table>
