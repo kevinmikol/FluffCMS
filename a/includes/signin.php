@@ -12,7 +12,7 @@
 
 
 <link rel="stylesheet" type="text/css" href="assets/css/login.css" media="screen" />
-<title>Login | <? echo $sitetitle ?></title>
+<title>Login | <?=$title;?></title>
 
 <style type="text/css">
 html{

@@ -18,7 +18,7 @@ if(!isset($page)){
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>FluffCMS | <?=$sitetitle?></title>
+    <title>FluffCMS | <?=$title?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Kevin Mikolajczak">
@@ -96,8 +96,6 @@ if(!isset($page)){
     <script src="assets/js/bootstrap.js"></script>
 	
 	<!--PLUGINS -->
-<!--	<script src="plugins/ckeditor/ckeditor.js"></script>-->
-    
     <script src="plugins/summernote/summernote.min.js"></script>
     <link href="plugins/summernote/summernote.css" rel="stylesheet">
 
@@ -113,12 +111,20 @@ if(!isset($page)){
 	<script src="plugins/google/gadash.js"></script>
 	<script src="https://apis.google.com/js/client.js?onload=gadashInit"></script>
 -->
+    <script>
+    (function(w,d,s,g,js,fs){
+      g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
+      js=d.createElement(s);fs=d.getElementsByTagName(s)[0];
+      js.src='https://apis.google.com/js/platform.js';
+      fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
+    }(window,document,'script'));
+    </script>
 	<script>
 		var TABLE_ID = 'ga:<?=$gana; ?>';
 		var API_KEY = '<?=$apikey; ?>';
-		var CLIENT_ID = '<?=$clientid; ?>';
+		var CLIENT_ID = '1052648626176-0kpbhvqvhi3nuaalftdkmhoq39jojscs.apps.googleusercontent.com';
 	</script>
-	<script src="plugins/google/scripts.js"></script>
+	<script src="plugins/google/scripts2.js"></script>
 
 	<script>
 		var first = "<?=$activepage?>";

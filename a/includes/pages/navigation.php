@@ -115,7 +115,7 @@ function navigation(){
                     <input type="text" name='attr' id="navattr" placeholder='class="icon icon-home" id="about"' class="form-control" />
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-info" data-loading-text="adding..."><i class="icon-plus-sign"></i> Add To Menu</button>
+                    <button type="submit" class="btn btn-info" data-loading-text="adding..."><i class="fa fa-plus"></i> Add To Menu</button>
                 </div>
             </div>
 		</form>

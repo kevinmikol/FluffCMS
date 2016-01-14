@@ -57,3 +57,7 @@ footer {
     height:100%;
     display: none;
 }
+
+ul.nav li{
+    cursor: pointer;
+}
