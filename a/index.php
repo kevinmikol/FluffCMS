@@ -18,7 +18,7 @@ if(!isset($page)){
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>FluffCMS | <?=$title?></title>
+    <title>FluffCMS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Kevin Mikolajczak">
@@ -31,13 +31,13 @@ if(!isset($page)){
 
   <body>
   <div class="loader"><img src="assets/img/ripple.svg" /></div>
-	<div class='notifications bottom-right'></div>
+	<div class='notifications top-right'></div>
     
       <header>
         <nav class="navbar navbar-default">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -45,8 +45,16 @@ if(!isset($page)){
                   </button>
                   <a class="navbar-brand" href="/a"><img src="assets/img/logo.png" style="width:78px;" /></a>
                 </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="pull-right navbar-nav nav">
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                      <li page="dashboard"><a><i class="icon-dashboard"></i> Dashboard</a></li>
+                        <? if($user_role > 0){ ?> <li page="posts"><a><i class="icon-pencil"></i> Posts</a></li> <? } ?>
+                        <? if($user_role > 1){ ?><li page="pages"><a><i class="icon-file-text-alt"></i> Pages</a></li> <? } ?>
+                        <? if($user_role > 3){ ?><li page="navigation"><a><i class="icon-road"></i> Navigation</a></li> <? } ?>
+                        <? if($user_role > 1){ ?> <li page="blocks"><a><i class="icon-puzzle-piece"></i> Blocks</a></li> <? } ?>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                         <? if($user_role > 3){ ?><li page="users"><a><i class="icon-group"></i> Manage Users</a></li><? } ?>
                         <li class="dropdown">
                              <a class="dropdown-toggle" data-toggle="dropdown">Logged in as <?=$user_name; ?><b class="caret"></b></a>
                                <ul class="dropdown-menu">
@@ -58,19 +66,7 @@ if(!isset($page)){
                                 </ul>
                           </li>
                     </ul>
-                    <? if($user_role > 3){ ?>
-                    <ul class="pull-right navbar-nav nav loaders">
-                        <li page="users"><a><i class="icon-group"></i> Manage Users</a></li>
-                    </ul>
-                    <? } ?>
-                    <ul class="navbar-nav nav loaders">
-                      <li page="dashboard"><a><i class="icon-dashboard"></i> Dashboard</a></li>
-                        <? if($user_role > 0){ ?> <li page="posts"><a><i class="icon-pencil"></i> Posts</a></li> <? } ?>
-                        <? if($user_role > 1){ ?><li page="pages"><a><i class="icon-file-text-alt"></i> Pages</a></li> <? } ?>
-                        <? if($user_role > 3){ ?><li page="navigation"><a><i class="icon-road"></i> Navigation</a></li> <? } ?>
-                        <? if($user_role > 1){ ?> <li page="blocks"><a><i class="icon-puzzle-piece"></i> Blocks</a></li> <? } ?>
-                    </ul>
-              </div><!--/.nav-collapse -->
+                </div><!--/.nav-collapse -->
             </div>
         </nav>
     </header>
@@ -106,11 +102,6 @@ if(!isset($page)){
     <link href="plugins/notify/bootstrap-notify.css" rel="stylesheet">
     <link href="plugins/notify/alert-notification-animations.css" rel="stylesheet">
 
-<!--
-	<script src="https://www.google.com/jsapi"></script>
-	<script src="plugins/google/gadash.js"></script>
-	<script src="https://apis.google.com/js/client.js?onload=gadashInit"></script>
--->
     <script>
     (function(w,d,s,g,js,fs){
       g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
@@ -120,8 +111,7 @@ if(!isset($page)){
     }(window,document,'script'));
     </script>
 	<script>
-		var TABLE_ID = 'ga:<?=$gana; ?>';
-		var API_KEY = '<?=$apikey; ?>';
+		var TABLE_ID = 'ga:60994977';
 		var CLIENT_ID = '1052648626176-0kpbhvqvhi3nuaalftdkmhoq39jojscs.apps.googleusercontent.com';
 	</script>
 	<script src="plugins/google/scripts2.js"></script>
