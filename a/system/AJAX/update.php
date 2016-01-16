@@ -6,6 +6,9 @@ $id = $_POST['id'];
 
 $title = $_POST['title'];
 
+//print_r($_POST);
+print_r($_FILES);
+
 if($type=="" OR $type==NULL){
 	die;
 
@@ -13,7 +16,7 @@ if($type=="" OR $type==NULL){
 
 	require('../classes/page.class.php');
 	$page = new page();
-	$page->update($_POST['title'], $_POST['url'], $_POST['content'], $_POST['id']);
+	$page->update($_POST['title'], $_POST['url'], $_POST['htmlcontent'], $_POST['id'], $_POST['ub'], $_POST['template'], $_POST['featuredImage']);
 
 }else if($type=="block"){
 
