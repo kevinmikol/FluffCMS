@@ -16,7 +16,8 @@
                                         <input required class="form-control input-lg" type="text" placeholder="page title" name="title">
                                     </div>
                                     <div class="form-group">
-                                        <div class="form-control wysiwyg"></div>
+                                        <div class="form-control wysiwyg" name="content" id="content"></div>
+                                        <textarea name="htmlcontent" id="htmlcontent" style="display:none;"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -38,9 +39,11 @@
                                     <div class="form-group">
                                         <label for='featuredImage'>Featured Image</label>
                                         <div class="image-box">
+                                            <a class="btn btn-sm btn-danger deleteImage"><i class="fa fa-trash"></i></a>
                                             <img id="newPagePreview" src="#" alt="your image">
-                                            <input type='file' class="theImage" data-target="newPagePreview" style="display:none;" name="featuredImage"/>
+                                            <input type='file' class="theImage" data-target="newPagePreview" id="file" name="featuredImage" style="display:none;" data-loading-text="Uploading..."/>
                                             <a class="btn btn-info btn-upload">Upload Image</a>
+                                            <input type="hidden" name="featuredImage" class="imgurl" />
                                         </div>
                                     </div>
                                     <hr />

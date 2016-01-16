@@ -61,3 +61,14 @@ footer {
 ul.nav li{
     cursor: pointer;
 }
+
+.deleteImage{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: none;
+}
+
+.table>tbody>tr>td{
+    vertical-align: middle;
+}
