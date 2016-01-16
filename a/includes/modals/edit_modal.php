@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><span class="type"></span> Editor</h4>
+                <h4 class="modal-title"><i class="fa fa-edit"></i> <span class="type"></span> Editor</h4>
             </div>
             <div class="modal-body">
                     <!--Start PAGE Editor-->
@@ -15,6 +15,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="form-control wysiwyg" name="content" id="content"></div>
+                                        <textarea name="htmlcontent" id="htmlcontent" style="display:none;"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -33,7 +34,9 @@
                                             } ?>
                                         </select>
                                     </div>
-                                    <button class="btn btn-primary btn-lg editSave btn-success pull-right" id="updateTrue" data-loading-text="Saving..."><i class="fa fa-check"></i> Save</button>
+
+                                    <hr />
+                                    <button class="btn btn-primary btn-lg editSave btn-success pull-right" id="updateTrue" data-loading-text="Saving..." data-type="page"><i class="fa fa-check"></i> Save</button>
                                 </div>
                             </div>
                           <input type='hidden' id='ub' name='ub' value="<?=$user_id;?>" />
