@@ -1,7 +1,7 @@
 <? if($user_role > 3){
 
 //Autofill
-$stmturl = $db->prepare('SELECT url FROM cms_navigation');
+$stmturl = $db->prepare('SELECT url FROM cms_pages');
 $stmturl->execute();
 $urls = $stmturl->fetchAll();
 
@@ -98,7 +98,7 @@ function navigation(){
                     <label for='url'>Link URL</label>
                     <div class="navaddurl input-group">
                         <div class="input-group-addon"><?=$baseurl?></div>
-                        <input required type='text' id='navurl' name='url' class="form-control linkurl navurl" placeholder='url' pattern="[^!@#$%&*()|{}.,<> ]*" autocomplete="off">
+                        <input required type='text' name='url' class="form-control navurl" placeholder='url' pattern="[^!@#$%&*()|{}.,<> ]*" autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group">
