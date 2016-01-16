@@ -35,7 +35,7 @@ else
           <div id="sources"></div>
        </div>
         <div class="col-md-4">
-          <h2><i class="fa fa-globe"></i> Metro Areas</h2>
+          <h2><i class="fa fa-globe"></i> Locations</h2>
           <div id="metros"></div>
         </div>
       </div>

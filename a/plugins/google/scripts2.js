@@ -32,7 +32,7 @@ visitors.execute();
 var sources = new gapi.analytics.googleCharts.DataChart({
     query: {
       metrics: 'ga:sessions',
-        ids: 'ga:60994977',
+        ids: TABLE_ID,
       dimensions: 'ga:source',
       'start-date': '30daysAgo',
       'end-date': 'yesterday',
@@ -54,7 +54,7 @@ sources.execute();
 var browsers = new gapi.analytics.googleCharts.DataChart({
     query: {
       metrics: 'ga:sessions',
-        ids: 'ga:60994977',
+        ids: TABLE_ID,
       dimensions: 'ga:browser',
       'start-date': '30daysAgo',
       'end-date': 'yesterday',
@@ -76,10 +76,11 @@ browsers.execute();
 var metros = new gapi.analytics.googleCharts.DataChart({
     query: {
       metrics: 'ga:sessions',
-      dimensions: 'ga:city',
+        ids: TABLE_ID,
+      dimensions: 'ga:country',
       'start-date': '30daysAgo',
       'end-date': 'yesterday',
-      'max-results': 50,
+      'max-results': 1000,
       sort: '-ga:sessions'
     },
     chart: {
