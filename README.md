@@ -1,4 +1,4 @@
-FluffCMS V0.2
+FluffCMS V.06
 ========
 
 FluffCMS is a basic and lightweight but powerful CMS. Developed by Kevin Mikolajczak.
