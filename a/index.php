@@ -45,7 +45,7 @@ if(!isset($page)){
                   </button>
                   <a class="navbar-brand" href="/a"><img src="assets/img/logo.png" style="width:78px;" /></a>
                 </div>
-                <div id="navbar" class="collapse navbar-collapse">
+                <div id="navbar" class="collapse navbar-collapse loaders">
                     <ul class="nav navbar-nav navbar-left">
                       <li page="dashboard"><a><i class="icon-dashboard"></i> Dashboard</a></li>
                         <? if($user_role > 0){ ?> <li page="posts"><a><i class="icon-pencil"></i> Posts</a></li> <? } ?>
@@ -90,6 +90,7 @@ if(!isset($page)){
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/typeahead.js"></script>
 	
 	<!--PLUGINS -->
     <script src="plugins/summernote/summernote.min.js"></script>
