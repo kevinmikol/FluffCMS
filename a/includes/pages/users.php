@@ -1,4 +1,4 @@
-<? if($user_role > 3){ ?>
+<? if($_SESSION['adminrole'] > 3){ ?>
 <div class="row">
 	<div class="col-md-12">
 		<ul class="nav nav-tabs" id="tabs">
@@ -27,12 +27,12 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="well">
-                                        <p><strong>Bystander</strong> only CMS viewing</p>
-                                        <p><strong>Blogger</strong> only blog access</p>
-                                        <p><strong>Content Editor</strong> page/block editing</p>
-                                        <p><strong>Content Creator</strong> page/block creation</p>
-                                        <p><strong>Minute Admin</strong> user management</p>
-                                        <p><strong>Super Admin</strong> everything</p>
+                                        <p><strong>Bystander</strong> read access</p>
+                                        <p><strong>Blogger</strong> posting ability</p>
+                                        <p><strong>Editor</strong> content editing</p>
+                                        <p><strong>Content Creator</strong> content creation</p>
+                                        <p><strong>Admin</strong> mostly everything</p>
+                                        <p><strong>Super</strong> the whole shabang</p>
                                     </div>
                                     <div class="form-group">
                                         <label for='role'>Role</label>
@@ -46,7 +46,7 @@
                                         </select>
                                     </div>
                                     <input type='hidden' id='type' name='type' value="user" />
-                                    <input type='hidden' id='cb' name='cb' value="<?=$user_id;?>" />
+                                    <input type='hidden' id='cb' name='cb' value="<?=$_SESSION['adminid'];?>" />
                                     <button type='submit' class='btn btn-success btn-large'><i class="fa fa-plus"></i> Create User</button>
                                 </div>
                             </div>
@@ -59,7 +59,9 @@
                     <table class="table table-hover table-striped" id="user-table">
                     <tr>
                         <th></th>
+                        <th></th>
                         <th>Name</th>
+                        <th>Email</th>
                         <th>Username</th>
                         <th>Last Login</th>
                     </tr>
@@ -70,15 +72,17 @@
                     $users = $users->fetchAll();
 
                     foreach($users as $info){
-                        echo $user_role !== '5';
-                        if($user_role !== '5' AND $info['role'] == '5'){continue;} ?>
+                        echo $_SESSION['adminrole'] !== '5';
+                        if($_SESSION['adminrole'] !== '5' AND $info['role'] == '5'){continue;} ?>
 
                         <tr id="<?=$info['id'];?>">
                             <td>
                                 <button class="btn btn-warning" onClick="edit('user', '<?=$info['id']?>')"><i class="fa fa-edit"></i></button>
                                 <a href="#deleteModal" role="button" class="btn deleteButton btn-danger" data-toggle="modal" data-type="user" data-id="<?=$info['id']?>" data-title="<?=$info['username']?>"><i class="fa fa-trash"></i></a>
                             </td>
+                            <td><a href="#" data-toggle="modal" data-target="#gravatarModal"><img src="<?=getGravatar($info['email'], 40);?>" class="img-thumbnail img-circle" /></a></td>
                             <td><h4><?=$info['name'];?> <small><?=humanRole($info['role']);?></small></h4></td>
+                            <td><a href="mailto:<?=$info['email'];?>"><?=$info['email'];?></a></td>
                             <td><?=$info['username'];?></td>
                             <td><?=humanDate($info['last_login'])?></td>
                         </tr>

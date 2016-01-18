@@ -1,12 +1,12 @@
-<? if($user_role > 1){ ?>
+<? if($_SESSION['adminrole'] > 1){ ?>
 <div class="row-fluid">
 	<div class="span12">
 		<ul class="nav nav-tabs" id="tabs">
 			<li class="active"><a href="#blockcurrent" data-toggle="tab"><i class="icon-list"></i> Current Blocks</a></li>
-			<? if($user_role > 2){ ?><li><a href="#blockcreate" data-toggle="tab"><i class="icon-plus-sign"></i> New Block</a></li><? } ?>
+			<? if($_SESSION['adminrole'] > 2){ ?><li><a href="#blockcreate" data-toggle="tab"><i class="icon-plus-sign"></i> New Block</a></li><? } ?>
 		</ul>
 		<div class="tab-content">
-		<? if($user_role > 2){ ?>
+		<? if($_SESSION['adminrole'] > 2){ ?>
 			<div class="tab-pane" id="blockcreate">
 			 	<section id="blockcreate">
 					<form class="create" data-type="block">
@@ -33,7 +33,7 @@
                         <th></th>
 						<th>Title</th>
                         <th>ID</th>
-						<? if($user_role > 3){ ?><th>Object Usage Code</th><? } ?>
+						<? if($_SESSION['adminrole'] > 3){ ?><th>Object Usage Code</th><? } ?>
 						<th>Last Updated</th>
                         <th>Created</th>
 					</tr>
@@ -46,11 +46,11 @@
 						<tr id="<?=$info['id']?>">
                             <td>
                                 <button class="btn btn-warning" onClick="edit('block', '<?=$info['id']?>')"><i class="fa fa-edit"></i></button>
-                                <? if($user_role > 2){ ?><a href="#deleteModal" role="button" class="btn deleteButton btn-danger" data-toggle="modal" data-type="block" data-id="<?=$info['id']?>" data-title="<?=$info['title']?>"><i class="fa fa-trash"></i></a><? } ?>
+                                <? if($_SESSION['adminrole'] > 2){ ?><a href="#deleteModal" role="button" class="btn deleteButton btn-danger" data-toggle="modal" data-type="block" data-id="<?=$info['id']?>" data-title="<?=$info['title']?>"><i class="fa fa-trash"></i></a><? } ?>
                             </td>
                             <td><h4><?=$info['title']?></h4></td>
                             <td><?=$info['id']?></td>
-                            <? if($user_role > 3){ ?><td><input type="text" readonly value="$Block->load('<?=$info['id']?>');" /></td><? } ?>
+                            <? if($_SESSION['adminrole'] > 3){ ?><td><input type="text" readonly value="$Block->load('<?=$info['id']?>');" /></td><? } ?>
                             <td><?=humanDate($info['updated'])?> <small>by <?=humanName($info['ub']);?></small></td>
                             <td><?=humanDate($info['created'])?> <small>by <?=humanName($info['cb']);?></small></td>
                             

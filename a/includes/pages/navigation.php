@@ -1,4 +1,4 @@
-<? if($user_role > 3){
+<? if($_SESSION['adminrole'] > 3){
 
 //Autofill
 $stmturl = $db->prepare('SELECT url FROM cms_pages');
@@ -22,18 +22,18 @@ function navigation(){
 	$stmt->execute();
 	
 	while($data = $stmt->fetch(PDO::FETCH_ASSOC)){
-	    $thisref = &$refs[ $data['item_id'] ];
+	    $thisref = &$refs[ $data['id'] ];
 	    $thisref['parent_id'] = $data['parent_id'];
-	    $thisref['item_id'] = $data['item_id'];
+	    $thisref['id'] = $data['id'];
 	    $thisref['text'] = $data['text'];
 	    $thisref['url'] = $data['url'];
 	    $thisref['target'] = $data['target'];
 		$thisref['type'] = $data['type'];
 	    if ($data['parent_id'] == 0){
-	        $list[ $data['item_id'] ] = &$thisref;
+	        $list[ $data['id'] ] = &$thisref;
 	    }
 	    else{
-	        $refs[ $data['parent_id'] ]['children'][ $data['item_id'] ] = &$thisref;
+	        $refs[ $data['parent_id'] ]['children'][ $data['id'] ] = &$thisref;
 	    }
 	}
 	$first = true;
@@ -48,10 +48,10 @@ function navigation(){
 			}
 	    foreach ($arr as $key=>$v) {
 	    	if($v['type'] == "1"){$ex = '  <i style="color:#49afcd" class="icon-external-link"></i>';}
-	        $html .= '<li id="list_'.$v['item_id'].'" data-url="'.$v['url'].'">
+	        $html .= '<li id="list_'.$v['id'].'" data-url="'.$v['url'].'">
 	        			<div><span>'.$v['text'].'</span>'.$ex.'
-	        				<a style="color:#da4f49" data-id="'.$v['item_id'].'" data-title="'.$v['text'].'" data-type="link" class="deleteButton"><i class="fa fa-trash pull-right"></i></a>
-	        				<a style="color:#faa732" data-id="'.$v['item_id'].'" class="navitemedit"><i class="fa fa-edit pull-right"></i></a>
+	        				<a style="color:#da4f49" data-id="'.$v['id'].'" data-title="'.$v['text'].'" data-type="link" class="deleteButton"><i class="fa fa-trash pull-right"></i></a>
+	        				<a style="color:#faa732" data-id="'.$v['id'].'" class="navitemedit"><i class="fa fa-edit pull-right"></i></a>
 	        			</div>';
 	        if (array_key_exists('children', $v)){
 	            $html .= "";

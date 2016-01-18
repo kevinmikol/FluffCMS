@@ -1,13 +1,13 @@
-<?php if($user_role > 1){ ?>
+<?php if($_SESSION['adminrole'] > 1){ ?>
 <div class="row">
 	<div class="col-md-12">
 		<ul class="nav nav-tabs" id="tabs">
 			<li class="active"><a href="#pagecurrent" data-toggle="tab"><i class="icon-list"></i> Current Pages</a></li>
-			<?php if($user_role > 2){ ?><li><a href="#pagecreate" data-toggle="tab"><i class="icon-plus-sign"></i> New Page</a></li><?php } ?>
+			<?php if($_SESSION['adminrole'] > 2){ ?><li><a href="#pagecreate" data-toggle="tab"><i class="icon-plus-sign"></i> New Page</a></li><?php } ?>
 		</ul>
 		<div class="tab-content">
 			<div class="tab-pane" id="pagecreate">
-			   <?php if($user_role > 2){ ?>
+			   <?php if($_SESSION['adminrole'] > 2){ ?>
 					  <section id="pagecreate">
 						<form class="create" data-type="page">
                             <div class="row">
@@ -50,7 +50,7 @@
                                     <button type='submit' class='btn btn-success btn-lg pull-right'><i class="fa fa-plus-circle"></i> Create Page</button>
                                 </div>
                             </div>
-                          <input type='hidden' id='cb' name='cb' value="<?=$user_id;?>" />
+                          <input type='hidden' id='cb' name='cb' value="<?=$_SESSION['adminid'];?>" />
                           <input type='hidden' id='type' name='type' value="page" />
 				        </form>
 					</section>
@@ -76,7 +76,7 @@
                             <tr id="<?=$info['id']?>">
                                 <td>
                                     <button class="btn btn-warning" onClick="edit('page', '<?=$info['id']?>')"><i class="fa fa-edit"></i></button>
-                                    <?php if($user_role > 2){ ?><a href="#deleteModal" role="button" class="btn deleteButton btn-danger" data-toggle="modal" data-type="page" data-id="<?=$info['id']?>" data-title="<?=$info['title']?>"><i class="fa fa-trash"></i></a><?php } ?>
+                                    <?php if($_SESSION['adminrole'] > 2){ ?><a href="#deleteModal" role="button" class="btn deleteButton btn-danger" data-toggle="modal" data-type="page" data-id="<?=$info['id']?>" data-title="<?=$info['title']?>"><i class="fa fa-trash"></i></a><?php } ?>
                                     <a class="btn btn-info" href="<?=$baseurl.$info['url'];
 			?>" target="_blank"><i class="fa fa-external-link"></i></a>
                                 </td>

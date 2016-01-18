@@ -11,10 +11,10 @@ else
  $dmsg = "<h3>Why you're up at an odd hour!</h3><br /><h2>Hello";
 ?>
 
-<? if($user_role > 1){ ?>
+<? if($_SESSION['adminrole'] > 1){ ?>
       <div class="row">
 		  <div class="jumbotron col-md-4">
-			<h2><?=$dmsg;?> <?=$user_name;?>!</h2>
+			<h2><?=$dmsg;?> <?=$_SESSION['adminname'];?>!</h2>
 			<p>Welcome to FluffCMS!</p>
 			<p>This is the dashboard. All of your website statistics will be reported here.</p>
             <div id="authorize-button"></div>
@@ -43,7 +43,7 @@ else
 	   <div class="row">
 		  <div class="jumbotron col-md-8">
 		  	<h2>Welcome to FluffCMS!</h2>
-			<h1><?=$dmsg;?> <?=$user_name;?>!</h1>
+			<h1><?=$dmsg;?> <?=$_SESSION['adminname'];?>!</h1>
 		  </div>
 	</div>
 <? } ?>

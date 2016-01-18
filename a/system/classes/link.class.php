@@ -12,7 +12,7 @@ class link{
 	}
 	function edit($id){
 		global $db;
-		$link_edit = $db->prepare("SELECT * FROM cms_navigation WHERE item_id = :id");
+		$link_edit = $db->prepare("SELECT * FROM cms_navigation WHERE id = :id");
 		$link_edit->bindParam(':id', $id);
 		$link_edit->execute();
 		$array = $link_edit->fetch(PDO::FETCH_OBJ);
@@ -20,7 +20,7 @@ class link{
 	}
 	function update($id, $role, $name, $username){
 		global $db;
-		$link_update = $db->prepare("UPDATE cms_navigation SET text = :text, url = :url, type = :type, target = :target, attr = :attr WHERE item_id = :id");
+		$link_update = $db->prepare("UPDATE cms_navigation SET text = :text, url = :url, type = :type, target = :target, attr = :attr WHERE id = :id");
 		$link_update->bindParam(':id', $id);
 		$link_update->bindParam(':target', $_POST['target']);
 		$link_update->bindParam(':text', $_POST['text']);

@@ -8,10 +8,10 @@
         require('includes/signin.php');
         die;
     }else{
-        $user_name = $_SESSION['adminname'];
-        $user_role = $_SESSION['adminrole'];
-        $user_username = $_SESSION['adminusername'];
-        $user_id = $_SESSION['adminid'];
+        $_SESSION['adminname'] = $_SESSION['adminname'];
+        $_SESSION['adminrole'] = $_SESSION['adminrole'];
+        $_SESSION['adminusername'] = $_SESSION['adminusername'];
+        $_SESSION['adminid'] = $_SESSION['adminid'];
     }
 
     require($_SERVER['DOCUMENT_ROOT'].'/config.php');
@@ -21,7 +21,10 @@
 
     function humanDate($input){
         $time = strtotime($input);
-        return date("F j, Y g:i a [T]", $time);
+        if($time == 0)
+            return null;
+        else
+            return date("F j, Y g:i a [T]", $time);
     }
 
     function humanRole($int){
@@ -31,13 +34,13 @@
             case 1:
                 return "Blogger";
             case 2:
-                return "Content Editor";
+                return "Editor";
             case 3:
-                return "Content Creator";
+                return "Creator";
             case 4:
-                return "Minute Admin";
+                return "Admin";
             case 5:
-                return "Super Admin";
+                return "Super";
             default:
                 return null;
         }
@@ -55,8 +58,21 @@
             return $name;
     }
 
-function getDomain($url){
-    return parse_url($url)['host'];
-}
+    function getDomain($url){
+        return parse_url($url)['host'];
+    }
+
+    function getGravatar( $email, $s = 80, $d = 'identicon', $r = 'g', $img = false, $atts = array() ) {
+        $url = 'http://www.gravatar.com/avatar/';
+        $url .= md5( strtolower( trim( $email ) ) );
+        $url .= "?s=$s&d=$d&r=$r";
+        if ( $img ) {
+            $url = '<img src="' . $url . '"';
+            foreach ( $atts as $key => $val )
+                $url .= ' ' . $key . '="' . $val . '"';
+            $url .= ' />';
+        }
+        return $url;
+    }
 
 ?>

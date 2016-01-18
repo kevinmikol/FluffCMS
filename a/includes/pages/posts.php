@@ -1,4 +1,4 @@
-<? if($user_role > 0){ ?>
+<? if($_SESSION['adminrole'] > 0){ ?>
 <div class="row-fluid">
 	<div class="span12">
 		<ul class="nav nav-tabs" id="tabs">
@@ -45,7 +45,7 @@
                                 <button type='submit' class='btn btn-success btn-lg pull-right'><i class="fa fa-plus-circle"></i> Create Post</button>
                             </div>
                         </div>
-                      <input type='hidden' id='cb' name='cb' value="<?=$user_id;?>" />
+                      <input type='hidden' id='cb' name='cb' value="<?=$_SESSION['adminid'];?>" />
                       <input type='hidden' id='type' name='type' value="post" />
                     </form>
                 </section>

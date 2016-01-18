@@ -69,8 +69,8 @@ PRIMARY KEY(id),
  )");  
  
 $db->query("CREATE TABLE cms_navigation(
-item_id INT NOT NULL AUTO_INCREMENT, 
-PRIMARY KEY(item_id),
+id INT NOT NULL AUTO_INCREMENT, 
+PRIMARY KEY(id),
 `created_timestamp` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
  parent_id VARCHAR(100),
  depth INT,

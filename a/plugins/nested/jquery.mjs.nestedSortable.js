@@ -306,7 +306,7 @@
 			    left = 2;
 
 			ret.push({
-				"item_id": o.rootID,
+				"id": o.rootID,
 				"parent_id": 'none',
 				"depth": sDepth,
 				"left": '1',
@@ -348,7 +348,7 @@
 				}
 
 				if (id) {
-						ret.push({"item_id": id[2], "parent_id": pid, "depth": depth, "left": left, "right": right});
+						ret.push({"id": id[2], "parent_id": pid, "depth": depth, "left": left, "right": right});
 				}
 
 				left = right + 1;

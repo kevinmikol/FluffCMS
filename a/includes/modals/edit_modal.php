@@ -39,7 +39,7 @@
                                     <button class="btn btn-primary btn-lg editSave btn-success pull-right" id="updateTrue" data-loading-text="Saving..." data-type="page"><i class="fa fa-check"></i> Save</button>
                                 </div>
                             </div>
-                          <input type='hidden' id='ub' name='ub' value="<?=$user_id;?>" />
+                          <input type='hidden' id='ub' name='ub' value="<?=$_SESSION['adminid'];?>" />
                         <input type='hidden' class='type' name='type' value="page"/>
                         <input type='hidden' id='id' name='id'  />
                     </form>

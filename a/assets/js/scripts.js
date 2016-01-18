@@ -42,6 +42,8 @@ $(document).ready(function(){
 	  e.preventDefault();
 	  $(this).tab('show');
 	});
+    
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 $('input[data-url-target]').keyup(function(){
@@ -140,7 +142,7 @@ function editpop(vtype, data){
 	if(vtype == "navigation"){
 		$('#editModal .title').html(data['text']);
 		$('#editModal .type').attr('value', 'navigation');
-		$('#editModal .id').attr('value', data['item_id']);
+		$('#editModal .id').attr('value', data['id']);
 		$('#editModal #navurl').attr('value', data['url']);
 		$('#editModal #editnavtext').val(data['text']);
 		$('#editModal #target').val(data['target']);

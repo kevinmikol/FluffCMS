@@ -43,26 +43,32 @@ if(!isset($page)){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="/a"><img src="assets/img/logo.png" style="width:78px;" /></a>
+                  <a class="navbar-brand" href="/a"><img src="assets/img/logo.png" width="78px" /></a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse loaders">
                     <ul class="nav navbar-nav navbar-left">
-                      <li page="dashboard"><a><i class="icon-dashboard"></i> Dashboard</a></li>
-                        <? if($user_role > 0){ ?> <li page="posts"><a><i class="icon-pencil"></i> Posts</a></li> <? } ?>
-                        <? if($user_role > 1){ ?><li page="pages"><a><i class="icon-file-text-alt"></i> Pages</a></li> <? } ?>
-                        <? if($user_role > 3){ ?><li page="navigation"><a><i class="icon-road"></i> Navigation</a></li> <? } ?>
-                        <? if($user_role > 1){ ?> <li page="blocks"><a><i class="icon-puzzle-piece"></i> Blocks</a></li> <? } ?>
+                      <li page="dashboard"><a><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                        <? if($_SESSION['adminrole'] > 0){ ?> <li page="posts"><a><i class="fa fa-pencil"></i> Posts</a></li> <? } ?>
+                        <? if($_SESSION['adminrole'] > 1){ ?><li page="pages"><a><i class="fa fa-file-text"></i> Pages</a></li> <? } ?>
+                        <? if($_SESSION['adminrole'] > 3){ ?><li page="navigation"><a><i class="fa fa-road"></i> Navigation</a></li> <? } ?>
+                        <? if($_SESSION['adminrole'] > 1){ ?> <li page="blocks"><a><i class="fa fa-puzzle-piece"></i> Blocks</a></li> <? } ?>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                         <? if($user_role > 3){ ?><li page="users"><a><i class="icon-group"></i> Manage Users</a></li><? } ?>
+                         <? if($_SESSION['adminrole'] > 3){ ?><li page="users"><a><i class="fa fa-group"></i> Manage Users</a></li><? } ?>
                         <li class="dropdown">
-                             <a class="dropdown-toggle" data-toggle="dropdown">Logged in as <?=$user_name; ?><b class="caret"></b></a>
+                             <a class="dropdown-toggle" data-toggle="dropdown">Logged in as <?=$_SESSION['adminname']; ?><b class="caret"></b></a>
                                <ul class="dropdown-menu">
-                                    <li><a>Name: <?=$user_name; ?></a></li>
-                                    <li><a>Username: <?=$user_username; ?></a></li>
-                                    <li><a>Email: <?=$user_username; ?></a></li>
-                                   <li class="divider"></li>
-                                   <li><a href="system/AJAX/logout.php"><i class="icon-off"></i>  Logout</a></li>
+                                    <div style="text-align:center;">
+                                        <a data-toggle="modal" data-target="#gravatarModal">
+                                            <img src="<?=getGravatar($_SESSION['adminemail']);?>" class="img-thumbnail img-circle" />
+                                        </a>
+                                        <br />
+                                        <b><?=$_SESSION['adminname']; ?></b>
+                                        <br />
+                                        <i><?=$_SESSION['adminusername']; ?></i>
+                                    </div>
+                                    <li class="divider"></li>
+                                    <li><a href="system/AJAX/logout.php"><i class="icon-off"></i>  Logout</a></li>
                                 </ul>
                           </li>
                     </ul>
