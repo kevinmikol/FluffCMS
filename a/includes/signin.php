@@ -28,23 +28,24 @@ html{
 </head>
 
 <body>
-<div class="loading"><div class="loader"></div></div>
+<div class="loader"><img src="assets/img/ripple.svg" /></div>
     <div id="login-wrapper">
 	<img src="assets/img/logo.png" class="logo" />
         <form class="login" id="login">
-				    <p>
-				        <label for="login">username</label>
-				        <input type="text" name="username" placeholder="username" required>
-				    </p>
-				    <p>
-				        <label for="password">password</label>
-				        <input type="password" name='password' placeholder="password" required> 
-				    </p>
+            <p>
+                <label for="login">username</label>
+                <input type="text" name="username" placeholder="username" required>
+            </p>
+            <p>
+                <label for="password">password</label>
+                <input type="password" name='password' placeholder="password" required> 
+            </p>
 
-				    <p>
-				        <input type="submit" name="submit" value="login">
-				    </p>       
-				</form>
+            <p>
+                <input type="submit" name="submit" value="login">
+            </p>  
+            <a class="reset" href="/a/includes/reset.php">reset password</a>
+        </form>
     </div>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>

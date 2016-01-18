@@ -1,7 +1,7 @@
 $(document).ready(function() {
 $(window).load(function(){
 	$(".login").fadeIn();
-	$(".loading").fadeOut();
+	$(".loader").fadeOut();
 });
 
 if($.fn.placeholder) {

@@ -20,7 +20,8 @@ if($count){
 			$user_name = $row["name"];
 			$user_username = $row["username"];
 			$user_role = $row["role"];
-			}
+        }
+    
 		if($user_role > 0){
 			session_start();
 			$_SESSION['siteadmin'] = microtime();
@@ -28,6 +29,11 @@ if($count){
 			$_SESSION['adminname'] = $user_name;
 			$_SESSION['adminusername'] = $user_username;
 			$_SESSION['adminrole'] = $user_role;
+            
+            $loginresult = $db->prepare("UPDATE cms_users SET last_login = now() WHERE id = :id");
+            $loginresult->bindParam(":id", $user_id);
+            $loginresult->execute();
+            
 			echo 'true';
 		}else{
 			echo "false";

@@ -13,7 +13,7 @@
                             <div class="row">
                                 <div class="col-md-9">
                                     <div class="form-group">
-                                        <input required class="form-control input-lg" type="text" placeholder="page title" name="title">
+                                        <input required class="form-control input-lg" type="text" placeholder="page title" name="title" data-url-target="newPageURL">
                                     </div>
                                     <div class="form-group">
                                         <div class="form-control wysiwyg" name="content" id="content"></div>
@@ -25,7 +25,7 @@
                                         <label for='url'>URL</label>
                                         <div class="input-group">
                                             <div class="input-group-addon"><?=$baseurl?></div>
-                                            <input required type='text' id='url' name='url' class="form-control" placeholder='url' pattern="[^!@#$%&*()|{}.,<> ]*" autocomplete="off">
+                                            <input required type='text' id='url' name='url' class="form-control newPageURL" placeholder='url' pattern="[^!@#$%&*()|{}.,<> ]*" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group">

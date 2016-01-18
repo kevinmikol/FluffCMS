@@ -2,6 +2,10 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function convertToSlug(text){
+    return text.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+}
+
 $(document).ready(function(){
     
     $('.wysiwyg').summernote({
@@ -17,7 +21,10 @@ $(document).ready(function(){
 	$(".loader").fadeOut();
 	
 	//Active Classes and Loaders
-	$('.loaders li').click(function() {
+	$('.loaders li').click(function(){
+        if($(this).hasClass('dropdown'))
+            return;
+        
 		$('.loaders li').removeClass('active');
 		$(this).addClass("active");
 		
@@ -34,9 +41,11 @@ $(document).ready(function(){
 	$('#tabs a').click(function (e) {
 	  e.preventDefault();
 	  $(this).tab('show');
-	})
-	
-	$('button').button()
+	});
+});
+
+$('input[data-url-target]').keyup(function(){
+    $('input.'+$(this).data('url-target')).val(convertToSlug($(this).val()));
 });
 
 //Create Functions	
@@ -44,7 +53,7 @@ $("form.create").submit(function(e){
     e.preventDefault()
 	var type = $(this).attr("data-type");
 	if(type == "page" || type == "block"){
-		$("form."+type+" #htmlcontent").html($("form."+type+" .wysiwyg").summernote('code'));
+		$("form[data-type='"+type+"'] #htmlcontent").html($("form[data-type='"+type+"'] .wysiwyg").summernote('code'));
 	}
   $.post(
 	'system/AJAX/create.php',
@@ -55,7 +64,7 @@ $("form.create").submit(function(e){
                 type: "success"
             }).show();
 			if(type == "page" || type == "block"){
-				$("form."+type+" .wysiwyg").summernote('code', null);
+				$("form[data-type='"+type+"'] .wysiwyg").summernote('code', null);
 			};
 			$("form[data-type="+type+"]")[0].reset()
 		});

@@ -1,4 +1,5 @@
 <?PHP
+
 require($_SERVER['DOCUMENT_ROOT'].'/config.php');
 
 function sendEmail($to, $from, $subject, $message){
@@ -33,7 +34,7 @@ function sendEmail($to, $from, $subject, $message){
                                         <td style="padding: 30px; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">'.$message.'</td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; padding: 20px 30px 40px 30px;text-align:right;"><img src="'.$baseurl.'a/assets/img/logo.png" width="150" /></td>
+                                        <td style="color: lightgrey; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px; padding: 20px 30px 40px 30px;text-align:left;"><small>'.date("F j, Y, g:i a [T]").'</small><img src="'.$baseurl.'a/assets/img/logo.png" width="150" style="float:right"/></td>
                                     </tr>
                                 </table>
                             </td>
@@ -45,9 +46,7 @@ function sendEmail($to, $from, $subject, $message){
     </body>
     </html>
     ';
-    echo $message;
+
     return mail($to, $subject, $message, $headers);
 }
-
-echo sendEmail("me@kevinmikol.com", "Person <cms@local.com>", "reset", "message");
 ?>

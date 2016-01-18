@@ -16,6 +16,9 @@
                                         <input required type='text' id='name' name='name' placeholder='Full Name' class="form-control input-lg">
                                     </div>
                                     <div class="form-group">
+                                        <input required type='email' id='email' name='email' placeholder='Email' class="form-control input-lg">
+                                    </div>
+                                    <div class="form-group">
                                         <input required type='text' id='username' name='username' placeholder='Username' class="form-control input-lg">
                                     </div>
                                     <div class="form-group">
@@ -58,8 +61,7 @@
                         <th></th>
                         <th>Name</th>
                         <th>Username</th>
-                        <td>Updated</td>
-                        <td>Created</td>
+                        <th>Last Login</th>
                     </tr>
                     <?php
 
@@ -68,17 +70,17 @@
                     $users = $users->fetchAll();
 
                     foreach($users as $info){
-                        if($user_role !== 5 AND $info['role'] == 5){continue;} ?>
+                        echo $user_role !== '5';
+                        if($user_role !== '5' AND $info['role'] == '5'){continue;} ?>
 
                         <tr id="<?=$info['id'];?>">
                             <td>
                                 <button class="btn btn-warning" onClick="edit('user', '<?=$info['id']?>')"><i class="fa fa-edit"></i></button>
                                 <a href="#deleteModal" role="button" class="btn deleteButton btn-danger" data-toggle="modal" data-type="user" data-id="<?=$info['id']?>" data-title="<?=$info['username']?>"><i class="fa fa-trash"></i></a>
                             </td>
-                            <td><?=$info['username'];?></td>
                             <td><h4><?=$info['name'];?> <small><?=humanRole($info['role']);?></small></h4></td>
-                            <td><?=humanDate($info['updated'])?> <small>by <?=humanName($info['ub']);?></small></td>
-                            <td><?=humanDate($info['created'])?> <small>by <?=humanName($info['cb']);?></small></td>
+                            <td><?=$info['username'];?></td>
+                            <td><?=humanDate($info['last_login'])?></td>
                         </tr>
                     <? } ?>
                     </table>

@@ -33,5 +33,13 @@ class user{
 		$delete_user->bindParam(':id', $id);
 		$delete_user->execute();
 	}
+    function updatePW($auth, $password){
+        global $db, $salt;
+		$enpass = crypt($password,$salt);
+		$update_user = $db->prepare("UPDATE cms_users SET password = :password WHERE auth = :auth");
+		$update_user->bindParam(':auth', $auth);
+        $update_user->bindParam(':password', $enpass);
+		$update_user->execute();
+	}
 }
 ?>

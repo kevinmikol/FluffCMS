@@ -21,7 +21,7 @@
 
     function humanDate($input){
         $time = strtotime($input);
-        return date("F j, Y g:i a", $time);
+        return date("F j, Y g:i a [T]", $time);
     }
 
     function humanRole($int){
@@ -54,5 +54,9 @@
         else
             return $name;
     }
+
+function getDomain($url){
+    return parse_url($url)['host'];
+}
 
 ?>

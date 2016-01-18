@@ -58,9 +58,9 @@ if(!isset($page)){
                         <li class="dropdown">
                              <a class="dropdown-toggle" data-toggle="dropdown">Logged in as <?=$user_name; ?><b class="caret"></b></a>
                                <ul class="dropdown-menu">
-                                    <li><a>User ID: <?=$user_id; ?></a></li>
                                     <li><a>Name: <?=$user_name; ?></a></li>
                                     <li><a>Username: <?=$user_username; ?></a></li>
+                                    <li><a>Email: <?=$user_username; ?></a></li>
                                    <li class="divider"></li>
                                    <li><a href="system/AJAX/logout.php"><i class="icon-off"></i>  Logout</a></li>
                                 </ul>
@@ -92,14 +92,14 @@ if(!isset($page)){
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/typeahead.js"></script>
 	
-	<!--PLUGINS -->
+    <!--PLUGINS -->
     <script src="plugins/summernote/summernote.min.js"></script>
     <link href="plugins/summernote/summernote.css" rel="stylesheet">
 
-	<script src="plugins/nested/jquery.mjs.nestedSortable.js"></script>
-	<link href="plugins/nested/style.css" rel="stylesheet">
+    <script src="plugins/nested/jquery.mjs.nestedSortable.js"></script>
+    <link href="plugins/nested/style.css" rel="stylesheet">
 
-	<script src="plugins/notify/bootstrap-notify.js"></script>
+    <script src="plugins/notify/bootstrap-notify.js"></script>
     <link href="plugins/notify/bootstrap-notify.css" rel="stylesheet">
     <link href="plugins/notify/alert-notification-animations.css" rel="stylesheet">
 
@@ -115,7 +115,7 @@ if(!isset($page)){
 		var TABLE_ID = 'ga:60994977';
 		var CLIENT_ID = '1052648626176-0kpbhvqvhi3nuaalftdkmhoq39jojscs.apps.googleusercontent.com';
 	</script>
-	<script src="plugins/google/scripts2.js"></script>
+	<script src="plugins/google/scripts.js"></script>
 
 	<script>
 		var first = "<?=$activepage?>";

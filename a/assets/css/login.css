@@ -49,8 +49,6 @@
     font-size: 26px;
 }
 
-/* Placeholder style (from http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css) */
-
 .login input::-webkit-input-placeholder {
     color: rgba(37,21,26,0.5);
     text-shadow: 0 1px 0 rgba(255,255,255,0.15);
@@ -74,12 +72,11 @@
 .login input[type=text]:focus,
 .login input[type=password]:focus,
 .login input[type=submit]:focus {
-	background:
-rgba(221, 221, 221, 0.85);
+	background: rgba(221, 221, 221, 0.85);
     outline: none;
 }
 
-.login input[type=submit] {
+.login input[type=submit]{
     /* Size and position */
     width: 100px;
     padding: 10px;
@@ -112,27 +109,42 @@ background-position:100px;
 
 .logo{width:400px;position:fixed;bottom:0;right:0;}
 
-.loading {
+.loader {
     position: fixed;
-    background: rgba(0, 0, 0, 0.8);
+    background: #fff;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 500;
 }
 
-.loading .loader {
-background: url('../img/loading.gif') rgba(0, 0, 0, 0.8) no-repeat center;
-height:48px;
-width:48px;
-padding: 15px 25px 15px 25px;
-border-radius: 20px;
-top: 50%;
-left: 50%;
-position:absolute;
+.loader img{
+	width:300px;
+	height:300px;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px;
+	margin-left: -150px;
+	position: fixed;
 }
 
 @media only screen and (max-width: 48em) {
 .login{width:85%; padding:20px; margin-left:auto;margin-right:auto;}
 .logo{width:90%; padding:10px; margin:0;position:relative;top:0;left:0;}
+}
+
+a.reset{
+    float: right;
+    color: #888886;
+    margin-top: -10px;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+a.reset:hover{
+    color: #fff;
 }
