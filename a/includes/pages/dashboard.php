@@ -8,15 +8,16 @@ else if ($t>="12" && $t<"17")
 else if ($t>"17" && $t<"23")
   $dmsg = "Good evening";
 else
- $dmsg = "<h3>Why you're up at an odd hour!</h3><br /><h2>Hello";
-?>
+ $dmsg = "Why you're up at an odd hour!";
+
+$greetings = array("Aloha","Ahoy","Bonjour","G'day","Hello","Hey","Hi","Hola","Howdy","Salutations","Sup","What's up","Yo"); ?>
 
 <? if($_SESSION['adminrole'] > 1){ ?>
       <div class="row">
 		  <div class="jumbotron col-md-4">
-			<h2><?=$dmsg;?> <?=$_SESSION['adminname'];?>!</h2>
-			<p>Welcome to FluffCMS!</p>
+			<h2><?=$greetings[array_rand($greetings)]?> <?=$_SESSION['adminname'];?>!<br /><small><?=$dmsg?></small></h2>
 			<p>This is the dashboard. All of your website statistics will be reported here.</p>
+            <small>Server Time: <?=date("F j, Y g:i a [T]");?></small>
             <div id="authorize-button"></div>
 		  </div>
 		  <div class="col-md-8">
