@@ -3,7 +3,7 @@ require('../common.php');
 
 $type = $_POST['type'];
 $id = $_POST['id'];
-print_r($_POST);
+
 $title = $_POST['title'];
 
 if($type=="" OR $type==NULL){
