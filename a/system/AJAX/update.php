@@ -17,7 +17,7 @@ if($type=="" OR $type==NULL){
 }else if($type=="block"){
 	require('../classes/block.class.php');
 	$block = new block();
-	$block->update($_POST['title'], $_POST['content'], $_POST['id']);
+	$block->update($_POST['id'], $_POST['title'], $_POST['htmlcontent'], $_POST['ub']);
 }else if($type=="user"){
     $title = $_POST['username'];
 	require('../classes/user.class.php');
@@ -25,15 +25,12 @@ if($type=="" OR $type==NULL){
 	$user->update($_POST['id'], $_POST['role'], $_POST['name'], $_POST['username'], $_POST['email']);
     if($_POST['newPW'] !== "")
         $user->updatePW($_POST['id'], $_POST['newPW']);
-}else if($type=="navigation"){
+}else if($type=="link"){
+    $title = $_POST['text'];
 	require('../classes/link.class.php');
 	$link = new link();
-	$link->update($_POST['id'], $_POST['role'], $_POST['name'], $_POST['username']);
-	$title = $_POST['text']; ?>
-	<script>
-		$("ol li#list_<? echo $id; ?> div span").text('<? echo $_POST['text']; ?>');
-	</script>
-<? }else{
+	$link->update($_POST['id'], $_POST['target'], $_POST['text'], $_POST['url'], $_POST['linktype'], $_POST['attr']);
+}else{
     die;
 }
 ?>

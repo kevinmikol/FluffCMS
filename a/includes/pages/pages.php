@@ -82,7 +82,7 @@
                                 </td>
                                 <td><h4><?=$info['title']?> <small><?=$info['template']?></small></h4></td>
                                 <td><?="/".$info['url']?></td>
-                                <td><?=humanDate($info['updated'])?> <small>by <?=humanName($info['ub']);?></small></td>
+                                <td><?if(humanDate($info['updated']) !== null){echo humanDate($info['updated'])?> <small>by <?=humanName($info['ub']);?></small><? } ?></td>
                                 <td><?=humanDate($info['created'])?> <small>by <?=humanName($info['cb']);?></small></td>
                             </tr>
                         <?php } ?>

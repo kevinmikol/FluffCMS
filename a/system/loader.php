@@ -7,7 +7,7 @@ class load{
 			$clean = str_replace($strip, "", $filename);
 			$divn = $clean;
 			
-			echo "<section id='". $divn."' style='display:none;'>";
+			echo "<section data-page='". $divn."' style='display:none;'>";
 			include $filename;
 			echo "</section>";
 		}

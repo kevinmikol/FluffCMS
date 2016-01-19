@@ -68,7 +68,7 @@ if(!isset($page)){
                                         <i><?=$_SESSION['adminusername']; ?></i>
                                     </div>
                                     <li class="divider"></li>
-                                    <li><a href="system/AJAX/logout.php"><i class="icon-off"></i>  Logout</a></li>
+                                    <li><a href="system/AJAX/logout.php"><i class="icon-power-off"></i>  Logout</a></li>
                                 </ul>
                           </li>
                     </ul>
@@ -96,7 +96,6 @@ if(!isset($page)){
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script src="assets/js/bootstrap.js"></script>
-    <script src="assets/js/typeahead.js"></script>
 	
     <!--PLUGINS -->
     <script src="plugins/summernote/summernote.min.js"></script>

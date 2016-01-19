@@ -1,9 +1,9 @@
 <? if($_SESSION['adminrole'] > 0){ ?>
-<div class="row-fluid">
-	<div class="span12">
+<div class="row">
+	<div class="col-md-12">
 		<ul class="nav nav-tabs" id="tabs">
-			<li class="active"><a href="#postcurrent" data-toggle="tab"><i class="icon-list"></i> Current Posts</a></li>
-			<li><a href="#postcreate" data-toggle="tab"><i class="icon-plus-sign"></i> New Post</a></li>
+			<li class="active"><a href="#postcurrent" data-toggle="tab"><i class="fa fa-list"></i> Current Posts</a></li>
+			<li><a href="#postcreate" data-toggle="tab"><i class="fa fa-plus-circle"></i> New Post</a></li>
 		</ul>
 		<div class="tab-content">
 			<div class="tab-pane" id="postcreate">

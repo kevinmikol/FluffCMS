@@ -13,7 +13,7 @@ if($type=="" OR $type==NULL){
 }else if($type=="block"){
 	require('../classes/block.class.php');
 	$block = new block();
-	$block->create($_POST['title'], $_POST['content']);
+	$block->create($_POST['title'], $_POST['htmlcontent'], $_POST['cb']);
 	$title = $_POST['title'];
 }else if($type=="user"){
 	require('../classes/user.class.php');

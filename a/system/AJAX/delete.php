@@ -28,10 +28,10 @@ if($type=="" OR $type==NULL){
 }
 ?>
 <script>
-$('#<?=$type?>-table tr#<?=$id?>').fadeOut();
-$('#deleteModal').modal('hide');
-$('.notifications').notify({
-    message: { type: 'alert', text: 'The <?=$type ?> #<?=$id ?> was deleted.' },
-	type: "error"
-  }).show();
+    $('#<?=$type?>-table tr#<?=$id?>').fadeOut();
+    $('#deleteModal').modal('hide');
+    $('.notifications').notify({
+        message: { text: 'The <?=$type ?> #<?=$id ?> was deleted.' },
+        type: "danger"
+    }).show();
 </script>
