@@ -13,7 +13,7 @@
                             <div class="row">
                                 <div class="col-md-9">
                                     <div class="form-group">
-                                        <input required class="form-control input-lg" type="text" placeholder="page title" name="title" data-url-target="newPageURL">
+                                        <input required class="form-control input-lg" type="text" placeholder="page title" name="title" data-url-target="newPageURL" id="title">
                                     </div>
                                     <div class="form-group">
                                         <div class="form-control wysiwyg" name="content" id="content"></div>
@@ -43,7 +43,7 @@
                                             <img id="newPagePreview" src="#" alt="your image">
                                             <input type='file' class="theImage" data-target="newPagePreview" id="file" name="featuredImage" style="display:none;" data-loading-text="Uploading..."/>
                                             <a class="btn btn-info btn-upload">Upload Image</a>
-                                            <input type="hidden" name="featuredImage" class="imgurl" />
+                                            <input type="hidden" name="featuredImage" class="imgurl" id="featuredImage" />
                                         </div>
                                     </div>
                                     <hr />

@@ -11,7 +11,7 @@
                         <div class="row">
                                 <div class="col-md-9">
                                     <div class="form-group">
-                                        <input required class="form-control input-lg" type="text" placeholder="page title" name="title" id="title">
+                                        <input required class="form-control input-lg" type="text" placeholder="page title" id="title" name="title" data-url-target="editPageURL">
                                     </div>
                                     <div class="form-group">
                                         <div class="form-control wysiwyg" name="content" id="content"></div>
@@ -23,18 +23,27 @@
                                         <label for='url'>URL</label>
                                         <div class="input-group">
                                             <div class="input-group-addon"><?=$baseurl?></div>
-                                            <input required type='text' id='url' name='url' class="form-control" placeholder='url' pattern="[^!@#$%&*()|{}.,<> ]*" autocomplete="off">
+                                            <input required type='text' id='url' name='url' class="form-control editPageURL" placeholder='url' pattern="[^!@#$%&*()|{}.,<> ]*" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for='template'>Template</label>
-                                        <select required id='template' name='template' placeholder='Title' class="form-control" id="template">
+                                        <select required id='template' name='template' placeholder='Title' class="form-control">
                                             <?php foreach(glob($_SERVER['DOCUMENT_ROOT'].'/templates/*.php') as $template){
                                                     echo "<option>" . pathinfo($template, PATHINFO_FILENAME) . "</option>";
                                             } ?>
                                         </select>
                                     </div>
-
+                                    <div class="form-group">
+                                        <label for='featuredImage'>Featured Image</label>
+                                        <div class="image-box">
+                                            <a class="btn btn-sm btn-danger deleteImage"><i class="fa fa-trash"></i></a>
+                                            <img id="editPagePreview" src="#" alt="your image">
+                                            <input type='file' class="theImage" data-target="editPagePreview" id="file" name="featuredImage" style="display:none;" data-loading-text="Uploading..."/>
+                                            <a class="btn btn-info btn-upload">Upload Image</a>
+                                            <input type="hidden" name="featuredImage" id="featuredImage" class="imgurl" />
+                                        </div>
+                                    </div>
                                     <hr />
                                     <button class="btn btn-primary btn-lg editSave btn-success pull-right" id="updateTrue" data-loading-text="Saving..." data-type="page"><i class="fa fa-check"></i> Save</button>
                                 </div>

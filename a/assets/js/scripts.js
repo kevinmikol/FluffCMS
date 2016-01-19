@@ -112,15 +112,25 @@ function editpop(vtype, data){
 	$('#editModal .type').html(ctype);
 	$('#editModal #updateTrue').attr('data-type', vtype);
 	$('#editModal form').hide();
-	$('#editModal form.'+vtype).show();
+    
+    var theForm = $('#editModal form.'+vtype);
+	theForm.show();
 	
 	//Pages
 	if(vtype == "page"){
-		$('#editModal #title').val(data['title']);
-		$('#editModal #url').val(data['url']);
-		$('#editModal #id').val(data['id']);
-        $('#editModal #template').val(data['template']);
-		$('#editModal #content.wysiwyg').summernote('code', data['content']);
+		theForm.find('#title').val(data['title']);
+		theForm.find('#url').val(data['url']);
+		theForm.find('#id').val(data['id']);
+        theForm.find('#template').val(data['template']);
+		theForm.find('#content.wysiwyg').summernote('code', data['content']);
+        if(data['image']){
+            theForm.find('#featuredImage').val(data['image']);
+            theForm.find('#editPagePreview').attr("src", data['image']);
+            
+            theForm.find('.image-box').addClass('uploaded');
+        }else{
+            theForm.find('.image-box').removeClass('uploaded');
+        }
 	}
 	//Blocks
 	if(vtype == "block"){

@@ -72,3 +72,15 @@ ul.nav li{
 .table>tbody>tr>td{
     vertical-align: middle;
 }
+
+.image-box.uploaded .deleteImage{
+    display: block;
+}
+
+.image-box.uploaded img{
+    display: block;
+}
+
+.image-box.uploaded .btn-upload{
+    display: none;
+}
