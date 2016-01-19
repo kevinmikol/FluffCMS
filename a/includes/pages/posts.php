@@ -58,7 +58,6 @@
                     <th></th>
                     <th>Title</th>
                     <th>URL</th>
-                    <th>Last Updated</th>
                     <th>Created</th>
                 </tr>
                 <?php
@@ -68,7 +67,7 @@
 
                 foreach($page as $info){
 
-                    switch($status){
+                    switch($info['status']){
                         case 0:
                             $status = "draft";
                             break;
@@ -85,7 +84,6 @@
                         </td>
                         <td><h4><?=$info['title']?> <small><?=$status?></small></h4></td>
                         <td><?=$info['url']?></td>
-                        <td><?=humanDate($info['updated'])?> <small>by <?=humanName($info['ub']);?></small></td>
                         <td><?=humanDate($info['created'])?> <small>by <?=humanName($info['cb']);?></small></td>
                     </tr>
                 <?} ?>

@@ -3,7 +3,7 @@ require('../common.php');
 
 $type = $_POST['type'];
 $id = $_POST['id'];
-
+print_r($_POST);
 $title = $_POST['title'];
 
 if($type=="" OR $type==NULL){
@@ -30,6 +30,11 @@ if($type=="" OR $type==NULL){
 	require('../classes/link.class.php');
 	$link = new link();
 	$link->update($_POST['id'], $_POST['target'], $_POST['text'], $_POST['url'], $_POST['linktype'], $_POST['attr']);
+}else if($type=="post"){
+    $title = $_POST['title'];
+	require('../classes/post.class.php');
+	$post = new post();
+	$post->update($_POST['title'], $_POST['url'], $_POST['htmlcontent'], $_POST['id'], $_POST['ub'], $_POST['featuredImage'], $_POST['status']);
 }else{
     die;
 }

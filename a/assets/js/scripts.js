@@ -50,10 +50,11 @@ $('input[data-url-target]').keyup(function(){
 
 //Create Functions	
 $("form.create").submit(function(e){   
-    e.preventDefault()
+    e.preventDefault();
+    theForm = $("form[data-type="+type+"]");
 	var type = $(this).attr("data-type");
 	if(type == "page" || type == "block" || type == "post"){
-		$("form[data-type='"+type+"'] #htmlcontent").html($("form[data-type='"+type+"'] .wysiwyg").summernote('code'));
+		theForm.find('#htmlcontent').html($("form[data-type='"+type+"'] .wysiwyg").summernote('code'));
 	}
   $.post(
 	'system/AJAX/create.php',
@@ -66,18 +67,26 @@ $("form.create").submit(function(e){
 			if(type == "page" || type == "block" || type == "post"){
 				$("form[data-type='"+type+"'] .wysiwyg").summernote('code', null);
 			};
-			$("form[data-type="+type+"]")[0].reset();
+			theForm[0].reset();
+            
+            //Reset Image Box
+//            theForm.find('.image-box #featuredImage').val('');
+//            theForm.find('.image-box').removeClass('uploaded');
+//            theForm.find('.image-box .deleteImage').hide();
+//            theForm.find('.image-box img').hide();
+//            theForm.find('.image-box .btn-upload').show();
 		});
+    //refresh the data
     location.reload();
     return false;
 });
 
 
 //Update Functions
-$("button.editSave").click(function(e){
+$(document).on('click', ".editSave", function(e){
     e.preventDefault();
     var type = $(this).attr("data-type");
-    if(type == "page" || type == "block"){
+    if(type == "page" || type == "block" || type == "post"){
         $("form."+type+" #htmlcontent").html($("form."+type+" .wysiwyg").summernote('code'));
     }
     $.ajax({
@@ -315,6 +324,7 @@ $(document).on("click", ".deleteImage", function(e){
         'system/AJAX/delete_upload.php',
         { imgsrc: src },
         function(data){
+            ImageBox.find('.imgurl').val('');
             ImageBox.find('.deleteImage').fadeOut();
             ImageBox.find('img').fadeOut(function(){
                 ImageBox.find('img').attr('src', '');

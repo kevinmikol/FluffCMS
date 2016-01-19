@@ -95,7 +95,7 @@
                                         <input required type='text' id='username' name='username' placeholder='Username' class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <input required type='password' id='newPW' name='newPW' placeholder='New Password' class="form-control">
+                                        <input type='password' id='newPW' name='newPW' placeholder='New Password' class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -173,7 +173,7 @@
                         <input type="text" name='attr' id="attr" placeholder='class="icon icon-home" id="about"' class="form-control" />
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-lg editSave pull-right" id="updateTrue" data-loading-text="Saving..." data-type="link"><i class="fa fa-floppy-o"></i> Update Link</button><br /><br />
+                        <button class="btn btn-primary btn-lg editSave pull-right" id="updateTrue" data-loading-text="Saving..." data-type="link"><i class="fa fa-floppy-o"></i> Update Link</button><br /><br />
                     </div>
                     <input type='hidden' class='type' name='type' value="link" />
                     <input type='hidden' name='id' id='id' />
@@ -184,10 +184,10 @@
                     <div class="row">
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input required class="form-control input-lg" type="text" placeholder="post title" name="title">
+                                <input required class="form-control input-lg" type="text" placeholder="post title" name="title" id="title">
                             </div>
                             <div class="form-control wysiwyg" name="content" id="content"></div>
-                                <textarea name="htmlcontent" id="htmlcontent" style="display:none;"></textarea>
+                            <textarea name="htmlcontent" id="htmlcontent" style="display:none;"></textarea>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
@@ -209,13 +209,13 @@
                             </div>
                             <div class="form-group">
                                 <label>Status</label>
-                                <select class="form-control" name="status">
+                                <select class="form-control" name="status" id="status">
                                     <option value="1">Published</option>
                                     <option value="0">Draft</option>
                                 </select>
                             </div>
                             <hr />
-                            <button type="submit" class="btn btn-primary btn-lg editSave pull-right" id="updateTrue" data-loading-text="Saving..." data-type="link"><i class="fa fa-floppy-o"></i> Update Post</button><br /><br />
+                            <button class="btn btn-primary btn-lg editSave pull-right" id="updateTrue" data-loading-text="Saving..." data-type="post"><i class="fa fa-floppy-o"></i> Update Post</button><br /><br />
                         </div>
                     </div>
                     <input type='hidden' id='ub' name='ub' value="<?=$_SESSION['adminid'];?>" />
