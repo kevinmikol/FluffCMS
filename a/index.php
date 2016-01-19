@@ -68,7 +68,7 @@ if(!isset($page)){
                                         <i><?=$_SESSION['adminusername']; ?></i>
                                     </div>
                                     <li class="divider"></li>
-                                    <li><a href="system/AJAX/logout.php"><i class="icon-power-off"></i>  Logout</a></li>
+                                    <li><a href="system/AJAX/logout.php"><i class="fa fa-power-off"></i>  Logout</a></li>
                                 </ul>
                           </li>
                     </ul>
