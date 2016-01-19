@@ -18,7 +18,7 @@ if($type=="" OR $type==NULL){
 }else if($type=="user"){
 	require('../classes/user.class.php');
 	$user = new user();
-	$user->create($_POST['name'], $_POST['username'], $_POST['role'], $_POST['password']);
+	$user->create($_POST['name'], $_POST['username'], $_POST['role'], $_POST['password'], $_POST['email']);
 
 	$title = $_POST['username'];
 

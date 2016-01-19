@@ -52,7 +52,7 @@ if($_POST['email']){
 }else if($_POST['auth']){
     require('../system/classes/user.class.php');
 	$user = new user();
-	$user->updatePW($_POST['auth'], $_POST['password']);
+	$user->resetPW($_POST['auth'], $_POST['password']);
     
     $success = "Password Reset!";
 } ?>

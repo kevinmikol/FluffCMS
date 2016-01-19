@@ -16,7 +16,7 @@ class link{
 		$link_edit->bindParam(':id', $id);
 		$link_edit->execute();
 		$array = $link_edit->fetch(PDO::FETCH_OBJ);
-		echo json_encode($array);
+		return json_encode($array);
 	}
 	function update($id, $role, $name, $username){
 		global $db;

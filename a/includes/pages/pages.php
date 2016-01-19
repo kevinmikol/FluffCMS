@@ -2,8 +2,8 @@
 <div class="row">
 	<div class="col-md-12">
 		<ul class="nav nav-tabs" id="tabs">
-			<li class="active"><a href="#pagecurrent" data-toggle="tab"><i class="icon-list"></i> Current Pages</a></li>
-			<?php if($_SESSION['adminrole'] > 2){ ?><li><a href="#pagecreate" data-toggle="tab"><i class="icon-plus-sign"></i> New Page</a></li><?php } ?>
+			<li class="active"><a href="#pagecurrent" data-toggle="tab"><i class="fa fa-list"></i> Current Pages</a></li>
+			<?php if($_SESSION['adminrole'] > 2){ ?><li><a href="#pagecreate" data-toggle="tab"><i class="fa fa-plus-circle"></i> New Page</a></li><?php } ?>
 		</ul>
 		<div class="tab-content">
 			<div class="tab-pane" id="pagecreate">

@@ -11,7 +11,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Not now</button>
-                <button class="btn btn-primary deleteYes btn-danger"><i class="icon-remove-sign"></i>  Yes, delete</button>
+                <button class="btn btn-primary deleteYes btn-danger"><i class="fa fa-trash"></i>  Yes, delete</button>
             </div>
         </div>
     </div>

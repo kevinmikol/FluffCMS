@@ -28,7 +28,7 @@ $(document).ready(function(){
 		$('.loaders li').removeClass('active');
 		$(this).addClass("active");
 		
-		history.pushState("hi", $(this).attr("page"), $(this).attr("page"));
+		history.pushState("page", $(this).attr("page"), $(this).attr("page"));
 		var page = $(this).attr("page");
 		var title = $(this).text();
 		
@@ -118,9 +118,9 @@ function editpop(vtype, data){
 	
 	//Pages
 	if(vtype == "page"){
+        theForm.find('#id').val(data['id']);
 		theForm.find('#title').val(data['title']);
 		theForm.find('#url').val(data['url']);
-		theForm.find('#id').val(data['id']);
         theForm.find('#template').val(data['template']);
 		theForm.find('#content.wysiwyg').summernote('code', data['content']);
         if(data['image']){
@@ -141,12 +141,11 @@ function editpop(vtype, data){
 	}
 	//Users
 	if(vtype == "user"){
-		$('#editModal .title').html(data['name']);
-		$('#editModal #name').attr('value', data['name']);
-		$('#editModal #username').attr('value', data['username']);
-		$('#editModal #role').val(data['role']);
-		//$('#editModal #password').attr('value', data['password']);
-		$('#editModal #id').attr('value', data['id']);
+        theForm.find('#id').val(data['id']);
+		theForm.find('#name').val(data['name']);
+		theForm.find('#username').val(data['username']);
+		theForm.find('#role').val(data['role']);
+		theForm.find('#email').val(data['email']);
 	}
 	//Nav
 	if(vtype == "navigation"){

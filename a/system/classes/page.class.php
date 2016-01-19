@@ -17,7 +17,7 @@ class page{
 		$edit_page->bindParam(':id', $id);
 		$edit_page->execute();
 		$array = $edit_page->fetch(PDO::FETCH_OBJ);
-        echo json_encode($array);
+        return json_encode($array);
 	}
 	function update($title, $url, $content, $id, $ub, $template, $image){
 		global $db;

@@ -2,8 +2,8 @@
 <div class="row">
 	<div class="col-md-12">
 		<ul class="nav nav-tabs" id="tabs">
-			<li class="active"><a href="#usercurrent" data-toggle="tab"><i class="icon-list"></i> Current Users</a></li>
-			<li><a href="#usercreate" data-toggle="tab"><i class="icon-plus-sign"></i> New User</a></li>
+			<li class="active"><a href="#usercurrent" data-toggle="tab"><i class="fa fa-list"></i> Current Users</a></li>
+			<li><a href="#usercreate" data-toggle="tab"><i class="fa fa-plus-circle"></i> New User</a></li>
 		</ul>
 		<div class="tab-content">
             <div class="tab-pane" id="usercreate">
@@ -12,17 +12,41 @@
                         <form class="create" data-type="user">
                             <div class="row">
                                 <div class="col-md-9">
-                                    <div class="form-group">
-                                        <input required type='text' id='name' name='name' placeholder='Full Name' class="form-control input-lg">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4><i class="fa fa-info-circle"></i> User Information</h4>
+                                            <div class="form-group">
+                                                <input required type='text' id='name' name='name' placeholder='Full Name' class="form-control input-lg">
+                                            </div>
+                                            <div class="form-group">
+                                                <input required type='email' id='email' name='email' placeholder='Email' class="form-control input-lg">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <input required type='email' id='email' name='email' placeholder='Email' class="form-control input-lg">
-                                    </div>
-                                    <div class="form-group">
-                                        <input required type='text' id='username' name='username' placeholder='Username' class="form-control input-lg">
-                                    </div>
-                                    <div class="form-group">
-                                        <input required type='password' id='password' name='password' placeholder='Password' class="form-control input-lg">
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h4><i class="fa fa-user-secret"></i> Login Credentials</h4>
+                                            <div class="form-group">
+                                                <input required type='text' id='username' name='username' placeholder='Username' class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <input required type='password' id='password' name='password' placeholder='Password' class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4><i class="fa fa-suitcase"></i> User Role</h4>
+                                            <div class="form-group">
+                                                <select id="role" name="role" class="form-control">
+                                                    <option value="0">Bystander</option>
+                                                    <option value="1">Blogger</option>
+                                                    <option value="2">Content Editor</option>
+                                                    <option value="3">Content Creator</option>
+                                                    <option value="4">Minute Admin</option>
+                                                    <option value="5">Super Admin</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -34,20 +58,10 @@
                                         <p><strong>Admin</strong> mostly everything</p>
                                         <p><strong>Super</strong> the whole shabang</p>
                                     </div>
-                                    <div class="form-group">
-                                        <label for='role'>Role</label>
-                                        <select id="role" name="role" class="form-control">
-                                            <option value="0">Bystander</option>
-                                            <option value="1">Blogger</option>
-                                            <option value="2">Content Editor</option>
-                                            <option value="3">Content Creator</option>
-                                            <option value="4">Minute Admin</option>
-                                            <option value="5">Super Admin</option>
-                                        </select>
-                                    </div>
+                                    <hr />
                                     <input type='hidden' id='type' name='type' value="user" />
                                     <input type='hidden' id='cb' name='cb' value="<?=$_SESSION['adminid'];?>" />
-                                    <button type='submit' class='btn btn-success btn-large'><i class="fa fa-plus"></i> Create User</button>
+                                    <button type='submit' class='btn btn-success btn-lg pull-right'><i class="fa fa-plus-circle"></i> Create User</button>
                                 </div>
                             </div>
                         </form>

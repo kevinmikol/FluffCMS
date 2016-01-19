@@ -13,7 +13,7 @@ class block{
 		$edit_block->bindParam(':id', $id);
 		$edit_block->execute();
 		$array = $edit_block->fetch(PDO::FETCH_OBJ);
-		echo json_encode($array);
+		return json_encode($array);
 	}
 	function update($title, $content, $id){
 		global $db;

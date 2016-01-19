@@ -45,7 +45,7 @@
                                         </div>
                                     </div>
                                     <hr />
-                                    <button class="btn btn-primary btn-lg editSave btn-success pull-right" id="updateTrue" data-loading-text="Saving..." data-type="page"><i class="fa fa-check"></i> Save</button>
+                                    <button class="btn btn-primary btn-lg editSave pull-right" id="updateTrue" data-loading-text="Saving..." data-type="page"><i class="fa fa-floppy-o"></i> Update Page</button>
                                 </div>
                             </div>
                           <input type='hidden' id='ub' name='ub' value="<?=$_SESSION['adminid'];?>" />
@@ -65,20 +65,61 @@
                     <!--End BLOCK Editor-->
                     <!--Start USER Editor-->
                     <form id="update" class="user">
-                        <label for='name'>Name</label>
-                        <input required type='text' id='name' name='name' placeholder='Full Name'>
-                        <label for='username'>Username</label>
-                        <input required type='text' id='username' name='username' placeholder='Username'>
-                        <label for='role'>Role</label>
-                          <select id="role" name="role">
-                                <option value="0">Bystander</option>
-                                <option value="1">Blogger</option>
-                                <option value="2">Content Editor</option>
-                                <option value="3">Content Creator</option>
-                                <option value="4">Minute Admin</option>
-                                <option value="5">Super Admin</option>
-                          </select>
-                        <input type='hidden' class='type' name='type' value="user" />
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4><i class="fa fa-info-circle"></i> User Information</h4>
+                                        <div class="form-group">
+                                            <input required type='text' id='name' name='name' placeholder='Full Name' class="form-control input-lg">
+                                        </div>
+                                        <div class="form-group">
+                                            <input required type='email' id='email' name='email' placeholder='Email' class="form-control input-lg">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4><i class="fa fa-user-secret"></i> Login Credentials</h4>
+                                        <div class="form-group">
+                                            <input required type='text' id='username' name='username' placeholder='Username' class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <input required type='password' id='newPW' name='newPW' placeholder='New Password' class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4><i class="fa fa-suitcase"></i> User Role</h4>
+                                        <div class="form-group">
+                                            <select id="role" name="role" class="form-control">
+                                                <option value="0">Bystander</option>
+                                                <option value="1">Blogger</option>
+                                                <option value="2">Content Editor</option>
+                                                <option value="3">Content Creator</option>
+                                                <option value="4">Minute Admin</option>
+                                                <option value="5">Super Admin</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="well">
+                                    <p><strong>Bystander</strong> read access</p>
+                                    <p><strong>Blogger</strong> posting ability</p>
+                                    <p><strong>Editor</strong> content editing</p>
+                                    <p><strong>Content Creator</strong> content creation</p>
+                                    <p><strong>Admin</strong> mostly everything</p>
+                                    <p><strong>Super</strong> the whole shabang</p>
+                                </div>
+                                <hr />
+                                <input type='hidden' id='type' name='type' value="user" />
+                                <input type='hidden' id='ub' name='ub' value="<?=$_SESSION['adminid'];?>" />
+                                <input type='hidden' id='id' name='id' />
+                                <button class="btn btn-primary btn-lg editSave pull-right" id="updateTrue" data-loading-text="Saving..." data-type="user"><i class="fa fa-floppy-o"></i> Update User</button>
+                            </div>
+                        </div>
                     </form>
                     <!--End USER Editor-->
                     <!--Start NAVIGATION Editor-->
