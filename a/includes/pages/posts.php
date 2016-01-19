@@ -1,37 +1,38 @@
 <? if($_SESSION['adminrole'] > 0){ ?>
 <div class="row">
 	<div class="col-md-12">
-		<ul class="nav nav-tabs" id="tabs">
-			<li class="active"><a href="#postcurrent" data-toggle="tab"><i class="fa fa-list"></i> Current Posts</a></li>
-			<li><a href="#postcreate" data-toggle="tab"><i class="fa fa-plus-circle"></i> New Post</a></li>
-		</ul>
-		<div class="tab-content">
-			<div class="tab-pane" id="postcreate">
+        <ul class="nav nav-tabs" id="tabs">
+            <li class="active"><a href="#postcurrent" data-toggle="tab"><i class="fa fa-list"></i> Current Posts</a></li>
+            <li><a href="#postcreate" data-toggle="tab"><i class="fa fa-plus-circle"></i> New Post</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane" id="postcreate">
                   <section id="postcreate">
                     <form class="create" data-type="post">
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input required class="form-control input-lg" type="text" placeholder="post title" name="title">
+                                    <input required class="form-control input-lg" type="text" placeholder="post title" name="title" data-url-target="newPostURL">
                                 </div>
-                                <div class="form-group">
-                                    <div class="form-control wysiwyg"></div>
+                                <div class="form-control wysiwyg" name="content" id="content"></div>
+                                    <textarea name="htmlcontent" id="htmlcontent" style="display:none;"></textarea>
                                 </div>
-                            </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for='url'>URL</label>
                                     <div class="input-group">
                                         <div class="input-group-addon"><?=$baseurl?></div>
-                                        <input required type='text' id='url' name='url' class="form-control" placeholder='url' pattern="[^!@#$%&*()|{}.,<> ]*" autocomplete="off">
+                                        <input required type='text' id='url' name='url' class="form-control newPostURL" placeholder='url' pattern="[^!@#$%&*()|{}.,<> ]*" autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for='featuredImage'>Featured Image</label>
                                     <div class="image-box">
-                                        <img id="newPagePreview" src="#" alt="your image">
-                                        <input type='file' class="theImage" data-target="newPagePreview" style="display:none;" name="featuredImage"/>
+                                        <a class="btn btn-sm btn-danger deleteImage"><i class="fa fa-trash"></i></a>
+                                        <img id="newPostPreview" src="#" alt="your image">
+                                        <input type='file' class="theImage" data-target="newPostPreview" id="file" name="featuredImage" style="display:none;" data-loading-text="Uploading..."/>
                                         <a class="btn btn-info btn-upload">Upload Image</a>
+                                        <input type="hidden" name="featuredImage" class="imgurl" id="featuredImage" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -45,28 +46,28 @@
                                 <button type='submit' class='btn btn-success btn-lg pull-right'><i class="fa fa-plus-circle"></i> Create Post</button>
                             </div>
                         </div>
-                      <input type='hidden' id='cb' name='cb' value="<?=$_SESSION['adminid'];?>" />
-                      <input type='hidden' id='type' name='type' value="post" />
+                        <input type='hidden' id='cb' name='cb' value="<?=$_SESSION['adminid'];?>" />
+                        <input type='hidden' id='type' name='type' value="post" />
                     </form>
-                </section>
-		  </div>
-		  <div class="tab-pane active" id="postcurrent">
-			<section id="posttable">
-				<table class="table table-hover table-striped" id="post-table">
-				<tr>
-					<th></th>
+            </section>
+          </div>
+          <div class="tab-pane active" id="postcurrent">
+            <section id="posttable">
+                <table class="table table-hover table-striped" id="post-table">
+                <tr>
+                    <th></th>
                     <th>Title</th>
-					<th>URL</th>
-					<th>Last Updated</th>
+                    <th>URL</th>
+                    <th>Last Updated</th>
                     <th>Created</th>
-				</tr>
-				<?php
-				$page = $db->prepare("SELECT * FROM cms_posts");
-				$page->execute();
-				$page = $page->fetchAll();
-	
-				foreach($page as $info){
-                    
+                </tr>
+                <?php
+                $page = $db->prepare("SELECT * FROM cms_posts");
+                $page->execute();
+                $page = $page->fetchAll();
+
+                foreach($page as $info){
+
                     switch($status){
                         case 0:
                             $status = "draft";
@@ -75,8 +76,8 @@
                             $status = "published";
                             break;
                     }?>
-                    
-					<tr id="<?=$info['id']?>">
+
+                    <tr id="<?=$info['id']?>">
                         <td>
                             <button class="btn btn-warning" onClick="edit('post', '<?=$info['id']?>')"><i class="fa fa-edit"></i></button>
                             <a href="#deleteModal" role="button" class="btn deleteButton btn-danger" data-toggle="modal" data-type="post" data-id="<?=$info['id']?>" data-title="<?=$info['title']?>"><i class="fa fa-trash"></i></a>
@@ -87,11 +88,11 @@
                         <td><?=humanDate($info['updated'])?> <small>by <?=humanName($info['ub']);?></small></td>
                         <td><?=humanDate($info['created'])?> <small>by <?=humanName($info['cb']);?></small></td>
                     </tr>
-				<?} ?>
-				</table>
-			 </section>
-		  </div>
-		</div>
-	</div>
+                <?} ?>
+                </table>
+             </section>
+          </div>
+        </div>
+    </div>
 </div>
 <? } ?>

@@ -52,7 +52,7 @@ $('input[data-url-target]').keyup(function(){
 $("form.create").submit(function(e){   
     e.preventDefault()
 	var type = $(this).attr("data-type");
-	if(type == "page" || type == "block"){
+	if(type == "page" || type == "block" || type == "post"){
 		$("form[data-type='"+type+"'] #htmlcontent").html($("form[data-type='"+type+"'] .wysiwyg").summernote('code'));
 	}
   $.post(
@@ -63,12 +63,13 @@ $("form.create").submit(function(e){
                 message: { text: data },
                 type: "success"
             }).show();
-			if(type == "page" || type == "block"){
+			if(type == "page" || type == "block" || type == "post"){
 				$("form[data-type='"+type+"'] .wysiwyg").summernote('code', null);
 			};
 			$("form[data-type="+type+"]")[0].reset();
 		});
-      return false;
+    location.reload();
+    return false;
 });
 
 
@@ -165,7 +166,19 @@ function editpop(vtype, data){
 	}
     //Posts
 	if(vtype == "post"){
-        
+        theForm.find('#id').val(data['id']);
+		theForm.find('#title').val(data['title']);
+		theForm.find('#url').val(data['url']);
+        theForm.find('#status').val(data['status']);
+		theForm.find('#content.wysiwyg').summernote('code', data['content']);
+        if(data['image']){
+            theForm.find('#featuredImage').val(data['image']);
+            theForm.find('#editPostPreview').attr("src", data['image']);
+            
+            theForm.find('.image-box').addClass('uploaded');
+        }else{
+            theForm.find('.image-box').removeClass('uploaded');
+        }
 	}
     
     $('#editModal').modal('show');

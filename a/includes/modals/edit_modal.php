@@ -11,7 +11,7 @@
                     <div class="row">
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input required class="form-control input-lg" type="text" placeholder="page title" id="title" name="title" data-url-target="editPageURL">
+                                    <input required class="form-control input-lg" type="text" placeholder="page title" id="title" name="title">
                                 </div>
                                 <div class="form-group">
                                     <div class="form-control wysiwyg" name="content" id="content"></div>
@@ -23,7 +23,7 @@
                                     <label for='url'>URL</label>
                                     <div class="input-group">
                                         <div class="input-group-addon"><?=$baseurl?></div>
-                                        <input required type='text' id='url' name='url' class="form-control editPageURL" placeholder='url' pattern="[^!@#$%&*()|{}.,<> ]*" autocomplete="off">
+                                        <input required type='text' id='url' name='url' class="form-control" placeholder='url' pattern="[^!@#$%&*()|{}.,<> ]*" autocomplete="off">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -181,7 +181,46 @@
                 <!--End NAVIGATION Editor-->
                 <!--Start POST Editor-->
                 <form id="update" class="post">
-                    n/a
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input required class="form-control input-lg" type="text" placeholder="post title" name="title">
+                            </div>
+                            <div class="form-control wysiwyg" name="content" id="content"></div>
+                                <textarea name="htmlcontent" id="htmlcontent" style="display:none;"></textarea>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for='url'>URL</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><?=$baseurl?></div>
+                                    <input required type='text' id='url' name='url' class="form-control" placeholder='url' pattern="[^!@#$%&*()|{}.,<> ]*" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for='featuredImage'>Featured Image</label>
+                                <div class="image-box">
+                                    <a class="btn btn-sm btn-danger deleteImage"><i class="fa fa-trash"></i></a>
+                                    <img id="editPostPreview" src="#" alt="your image">
+                                    <input type='file' class="theImage" data-target="editPostPreview" id="file" name="featuredImage" style="display:none;" data-loading-text="Uploading..."/>
+                                    <a class="btn btn-info btn-upload">Upload Image</a>
+                                    <input type="hidden" name="featuredImage" class="imgurl" id="featuredImage" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control" name="status">
+                                    <option value="1">Published</option>
+                                    <option value="0">Draft</option>
+                                </select>
+                            </div>
+                            <hr />
+                            <button type="submit" class="btn btn-primary btn-lg editSave pull-right" id="updateTrue" data-loading-text="Saving..." data-type="link"><i class="fa fa-floppy-o"></i> Update Post</button><br /><br />
+                        </div>
+                    </div>
+                    <input type='hidden' id='ub' name='ub' value="<?=$_SESSION['adminid'];?>" />
+                    <input type='hidden' id='type' name='type' value="post" />
+                    <input type='hidden' id='id' name='id' />
                 </form>
                 <!--End POST Editor-->
             </div>

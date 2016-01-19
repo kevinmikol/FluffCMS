@@ -19,20 +19,12 @@ if($type=="" OR $type==NULL){
 	require('../classes/user.class.php');
 	$user = new user();
 	$user->create($_POST['name'], $_POST['username'], $_POST['role'], $_POST['password'], $_POST['email']);
-
 	$title = $_POST['username'];
-
-	function role($num){ 
-	  if($num == 0){
-		  echo "Bystander";
-	  }else if($num == 1){
-		  echo "Content Editor";
-	  }else if($num == 2){
-		  echo "Minute Admin";
-	  }else if($num == 3){
-		  echo "Super Admin";
-	  }
-	}
+}else if($type=="post"){
+    require('../classes/post.class.php');
+	$post = new post();
+	$post->create($_POST['title'], $_POST['url'], $_POST['htmlcontent'], $_POST['cb'], $_POST['featuredImage'], $_POST['status']);
+    $title = $_POST['title'];
 }else{
 	die;
 }
