@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="col-md-12">
         <ul class="nav nav-tabs" id="tabs">
-            <li class="active"><a href="#postcurrent" data-toggle="tab"><i class="fa fa-list"></i> Current Posts</a></li>
+            <li class="active"><a href="#postcurrent" data-toggle="tab" onClick="loadTable('posts', null);"><i class="fa fa-list"></i> Current Posts</a></li>
             <li><a href="#postcreate" data-toggle="tab"><i class="fa fa-plus-circle"></i> New Post</a></li>
         </ul>
         <div class="tab-content">
@@ -52,43 +52,7 @@
             </section>
           </div>
           <div class="tab-pane active" id="postcurrent">
-            <section id="posttable">
-                <table class="table table-hover table-striped" id="post-table">
-                <tr>
-                    <th></th>
-                    <th>Title</th>
-                    <th>URL</th>
-                    <th>Created</th>
-                </tr>
-                <?php
-                $page = $db->prepare("SELECT * FROM cms_posts");
-                $page->execute();
-                $page = $page->fetchAll();
-
-                foreach($page as $info){
-
-                    switch($info['status']){
-                        case 0:
-                            $status = "draft";
-                            break;
-                        case 1:
-                            $status = "published";
-                            break;
-                    }?>
-
-                    <tr id="<?=$info['id']?>">
-                        <td>
-                            <button class="btn btn-warning" onClick="edit('post', '<?=$info['id']?>')"><i class="fa fa-edit"></i></button>
-                            <a href="#deleteModal" role="button" class="btn deleteButton btn-danger" data-toggle="modal" data-type="post" data-id="<?=$info['id']?>" data-title="<?=$info['title']?>"><i class="fa fa-trash"></i></a>
-                            <a class="btn btn-info" href="<?=$baseurl.$info['url'];?>" target="_blank"><i class="fa fa-external-link"></i></a>
-                        </td>
-                        <td><h4><?=$info['title']?> <small><?=$status?></small></h4></td>
-                        <td><?=$info['url']?></td>
-                        <td><?=humanDate($info['created'])?> <small>by <?=humanName($info['cb']);?></small></td>
-                    </tr>
-                <?} ?>
-                </table>
-             </section>
+            <section id="posts-table"></section>
           </div>
         </div>
     </div>

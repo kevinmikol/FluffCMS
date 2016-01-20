@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<ul class="nav nav-tabs" id="tabs">
-			<li class="active"><a href="#blockcurrent" data-toggle="tab"><i class="fa fa-list"></i> Current Blocks</a></li>
+			<li class="active"><a href="#blockcurrent" data-toggle="tab" onClick="loadTable('blocks', null);"><i class="fa fa-list"></i> Current Blocks</a></li>
 			<? if($_SESSION['adminrole'] > 2){ ?><li><a href="#blockcreate" data-toggle="tab"><i class="fa fa-plus-circle"></i> New Block</a></li><? } ?>
 		</ul>
 		<div class="tab-content">
@@ -29,33 +29,7 @@
 			</div>
 			<? } ?>
 			<div class="tab-pane active" id="blockcurrent">
-				<section id="blocktable">
-					<table class="table table-hover table-striped" id="block-table">
-					<tr>
-                        <th></th>
-                        <th>ID</th>
-						<th>Title</th>
-						<? if($_SESSION['adminrole'] > 3){ ?><th>Object Usage Code</th><? } ?>
-						<th>Last Updated</th>
-					</tr>
-					<?php
-					$blocks = $db->prepare("SELECT * FROM cms_blocks");
-					$blocks->execute();
-					$blocks = $blocks->fetchAll();
-		
-					foreach($blocks as $info){?>
-						<tr id="<?=$info['id']?>">
-                            <td>
-                                <button class="btn btn-warning" onClick="edit('block', '<?=$info['id']?>')"><i class="fa fa-edit"></i></button>
-                                <? if($_SESSION['adminrole'] > 2){ ?><a href="#deleteModal" role="button" class="btn deleteButton btn-danger" data-toggle="modal" data-type="block" data-id="<?=$info['id']?>" data-title="<?=$info['title']?>"><i class="fa fa-trash"></i></a><? } ?>
-                            </td>
-                            <td><?=$info['id']?></td>
-                            <td><h4><?=$info['title']?></h4></td>
-                            <? if($_SESSION['adminrole'] > 3){ ?><td><input type="text" readonly value="$Block->load('<?=$info['id']?>');" /></td><? } ?>
-                            <td><?if(humanDate($info['updated']) !== null){echo humanDate($info['updated'])?> <small>by <?=humanName($info['ub']);?></small><? } ?></td>
-					<? } ?>
-					</table>
-				 </section>
+				<section id="blocks-table"></section>
 			</div>
 		</div>
 	</div>

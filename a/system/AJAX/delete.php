@@ -14,11 +14,3 @@ if($type=="" OR $type==NULL){
 if($type=="link")
 	echo "<script>$('ol li#list_".$_POST['id']."').fadeOut();</script>";
 ?>
-<script>
-    $('#<?=$type?>-table tr#<?=$id?>').fadeOut();
-    $('#deleteModal').modal('hide');
-    $('.notifications').notify({
-        message: { text: 'The <?=$type ?> #<?=$id ?> was deleted.' },
-        type: "danger"
-    }).show();
-</script>

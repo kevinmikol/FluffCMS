@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<ul class="nav nav-tabs" id="tabs">
-			<li class="active"><a href="#pagecurrent" data-toggle="tab"><i class="fa fa-list"></i> Current Pages</a></li>
+			<li class="active"><a href="#pagecurrent" data-toggle="tab" onClick="loadTable('pages', null);"><i class="fa fa-list"></i> Current Pages</a></li>
 			<?php if($_SESSION['adminrole'] > 2){ ?><li><a href="#pagecreate" data-toggle="tab"><i class="fa fa-plus-circle"></i> New Page</a></li><?php } ?>
 		</ul>
 		<div class="tab-content">
@@ -57,39 +57,7 @@
 				<?php } ?>
 		  </div>
 		  <div class="tab-pane active" id="pagecurrent">
-			<section id="pagetable">
-                <div class="row">
-                    <div class="col-md-12">
-                        <table class="table table-hover table-striped" id="page-table">
-                        <tr>
-                            <th></th>
-                            <th>Title</th>
-                            <th>URL</th>
-                            <th>Last Updated</th>
-                            <th>Created</th>
-                        </tr>
-                        <?php
-                            $page = $db->prepare("SELECT * FROM cms_pages");
-                            $page->execute();
-                            $page = $page->fetchAll();
-                            foreach($page as $info){ ?>
-                            <tr id="<?=$info['id']?>">
-                                <td>
-                                    <button class="btn btn-warning" onClick="edit('page', '<?=$info['id']?>')"><i class="fa fa-edit"></i></button>
-                                    <?php if($_SESSION['adminrole'] > 2){ ?><a href="#deleteModal" role="button" class="btn deleteButton btn-danger" data-toggle="modal" data-type="page" data-id="<?=$info['id']?>" data-title="<?=$info['title']?>"><i class="fa fa-trash"></i></a><?php } ?>
-                                    <a class="btn btn-info" href="<?=$baseurl.$info['url'];
-			?>" target="_blank"><i class="fa fa-external-link"></i></a>
-                                </td>
-                                <td><h4><?=$info['title']?> <small><?=$info['template']?></small></h4></td>
-                                <td><?="/".$info['url']?></td>
-                                <td><?if(humanDate($info['updated']) !== null){echo humanDate($info['updated'])?> <small>by <?=humanName($info['ub']);?></small><? } ?></td>
-                                <td><?=humanDate($info['created'])?> <small>by <?=humanName($info['cb']);?></small></td>
-                            </tr>
-                        <?php } ?>
-                        </table>
-                    </div>
-                </div>
-			 </section>
+			<section id="pages-table"></section>
 		  </div>
 		</div>
 	</div>

@@ -7,7 +7,7 @@ function convertToSlug(text){
 }
 
 $(document).ready(function(){
-	$('.loaders li[page='+first+']').trigger('click');
+	$('.loaders li[data-page='+first+']').trigger('click');
     $('.loader').fadeOut(500);
     
     $('.wysiwyg').summernote({
@@ -20,6 +20,20 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
 
+function loadTable(type, selected){
+    $('section#'+type+'-table').fadeOut(200);
+    $('section#'+type+'-table').html("<h2>Refreshing Data...</h2>");
+    
+    $.post('system/AJAX/table.php', {type: type, selected: selected},
+        function(data){
+            $('section#'+type+'-table').fadeIn(200);
+            $('section#'+type+'-table').html(data);
+        }
+    );
+    
+    return false;
+}
+
 //Active Classes and Loaders
 $('.loaders li').click(function(){
     if($(this).hasClass('dropdown'))
@@ -28,18 +42,24 @@ $('.loaders li').click(function(){
     $('.loaders li').removeClass('active');
     $(this).addClass("active");
 
-    var page = $(this).attr("page");
+    var page = $(this).data("page");
     var title = $(this).text();
+    
+    loadTable(page, null);
 
     $('.container section[data-page]').fadeOut(200);
     $('.container section[data-page='+page+']').delay(200).fadeIn(200);
 
-    history.pushState("page", $(this).attr("page"), $(this).attr("page"));
+    history.pushState(page, page, page);
 
     document.title = title+' · FluffCMS';
 });
 
-$('#tabs a').click(function(e){
+window.addEventListener('popstate', function(e) {
+  $('.loaders li[data-page='+e.state+']').trigger('click');
+});
+
+$('a[data-toggle=tab]').click(function(e){
   e.preventDefault();
   $(this).tab('show');
 });
@@ -51,10 +71,10 @@ $('input[data-url-target]').keyup(function(){
 //Create Functions	
 $("form.create").submit(function(e){   
     e.preventDefault();
-    theForm = $("form[data-type="+type+"]");
+    
 	var type = $(this).attr("data-type");
 	if(type == "page" || type == "block" || type == "post"){
-		theForm.find('#htmlcontent').html($("form[data-type='"+type+"'] .wysiwyg").summernote('code'));
+		$("form[data-type="+type+"]").find('#htmlcontent').html($("form[data-type='"+type+"'] .wysiwyg").summernote('code'));
 	}
   $.post(
 	'system/AJAX/create.php',
@@ -64,20 +84,20 @@ $("form.create").submit(function(e){
                 message: { text: data },
                 type: "success"
             }).show();
-			if(type == "page" || type == "block" || type == "post"){
-				$("form[data-type='"+type+"'] .wysiwyg").summernote('code', null);
+			
+            if(type == "page" || type == "block" || type == "post"){
+				$("form[data-type="+type+"]").find(".wysiwyg").summernote('code', null);
 			};
-			theForm[0].reset();
+			
+            $("form[data-type="+type+"]")[0].reset();
             
             //Reset Image Box
-//            theForm.find('.image-box #featuredImage').val('');
-//            theForm.find('.image-box').removeClass('uploaded');
-//            theForm.find('.image-box .deleteImage').hide();
-//            theForm.find('.image-box img').hide();
-//            theForm.find('.image-box .btn-upload').show();
+            $("form[data-type="+type+"]").find('.image-box #featuredImage').val('');
+            $("form[data-type="+type+"]").find('.image-box').removeClass('uploaded');
+            $("form[data-type="+type+"]").find('.image-box img').hide();
+            $("form[data-type="+type+"]").find('.image-box .btn-upload').show();
+            $("form[data-type="+type+"]").find('.image-box .deleteImage').hide();
 		});
-    //refresh the data
-    location.reload();
     return false;
 });
 
@@ -94,8 +114,14 @@ $(document).on('click', ".editSave", function(e){
         url: "system/AJAX/update.php",
         data: $('form.'+type).serialize(),
         success: function(msg){
-                $(".notifications").html(msg),
-                $("#editModal").modal('hide')
+            $('.notifications').notify({
+                message: { text: msg },
+                type: "info"
+            }).show();
+
+            loadTable(type+'s', $("form."+type).find('#id').val());
+                      
+            $("#editModal").modal('hide');
         },
         error: function(){
             alert("failure");
@@ -212,7 +238,18 @@ function del(vtype, vid){
        url: "system/AJAX/delete.php",
        data: { type: vtype, id: vid },
        success: function(data){
-         $(".notifications").html(data)
+           $('#deleteModal').modal('hide');
+           
+            $('#'+vtype+'-table tr#'+vid).fadeOut().remove();
+           
+            if($('#'+vtype+'-table').find('td').length == 0){
+                loadTable(vtype+'s', null);
+            }
+           
+            $('.notifications').notify({
+                message: { text: 'The '+vtype+' was deleted.' },
+                type: "danger"
+            }).show();
        }
      });
 }

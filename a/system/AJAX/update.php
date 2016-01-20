@@ -38,10 +38,6 @@ if($type=="" OR $type==NULL){
 }else{
     die;
 }
+
+echo 'The '.$type.' "'.$title.'" was updated.';
 ?>
-<script>
-    $('.notifications').notify({
-        message: { text: 'The <?=$type ?> "<?=$title ?>" was updated.' },
-        type: "info"
-    }).show();
-</script>
