@@ -47,14 +47,14 @@ if(!isset($page)){
                 </div>
                 <div id="navbar" class="collapse navbar-collapse loaders">
                     <ul class="nav navbar-nav navbar-left">
-                      <li page="dashboard"><a><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                        <? if($_SESSION['adminrole'] > 0){ ?> <li page="posts"><a><i class="fa fa-pencil"></i> Posts</a></li> <? } ?>
-                        <? if($_SESSION['adminrole'] > 1){ ?><li page="pages"><a><i class="fa fa-file-text"></i> Pages</a></li> <? } ?>
-                        <? if($_SESSION['adminrole'] > 3){ ?><li page="navigation"><a><i class="fa fa-road"></i> Navigation</a></li> <? } ?>
-                        <? if($_SESSION['adminrole'] > 1){ ?> <li page="blocks"><a><i class="fa fa-puzzle-piece"></i> Blocks</a></li> <? } ?>
+                      <li data-page="dashboard"><a><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                        <? if($_SESSION['adminrole'] > 0){ ?> <li data-page="posts"><a><i class="fa fa-pencil"></i> Posts</a></li> <? } ?>
+                        <? if($_SESSION['adminrole'] > 1){ ?><li data-page="pages"><a><i class="fa fa-file-text"></i> Pages</a></li> <? } ?>
+                        <? if($_SESSION['adminrole'] > 3){ ?><li data-page="navigation"><a><i class="fa fa-road"></i> Navigation</a></li> <? } ?>
+                        <? if($_SESSION['adminrole'] > 1){ ?> <li data-page="blocks"><a><i class="fa fa-puzzle-piece"></i> Blocks</a></li> <? } ?>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                         <? if($_SESSION['adminrole'] > 3){ ?><li page="users"><a><i class="fa fa-group"></i> Manage Users</a></li><? } ?>
+                         <? if($_SESSION['adminrole'] > 3){ ?><li data-page="users"><a><i class="fa fa-group"></i> Manage Users</a></li><? } ?>
                         <li class="dropdown">
                              <a class="dropdown-toggle" data-toggle="dropdown">Logged in as <?=$_SESSION['adminname']; ?><b class="caret"></b></a>
                                <ul class="dropdown-menu">
