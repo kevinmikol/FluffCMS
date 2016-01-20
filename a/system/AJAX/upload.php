@@ -53,7 +53,7 @@ if($_FILES){
                 $ext = pathinfo($file["name"], PATHINFO_EXTENSION);
                 $name = str_replace(".".$ext, '' , $file["name"]);
 
-                $file['name'] = $name."_1.".$ext;
+                $file['name'] = $name."_".microtime().".".$ext;
             }
             
 	        $filename = compress_image($file["tmp_name"], $url.$file['name'], 8, 800, 800);
