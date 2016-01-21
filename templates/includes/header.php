@@ -1,0 +1,1 @@
+<title><?=$CurrentPage->title?></title>
