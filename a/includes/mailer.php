@@ -21,7 +21,7 @@ function sendEmail($to, $from, $subject, $message){
         <table border="0" cellpadding="0" cellspacing="0" width="100%">	
             <tr>
                 <td style="padding: 10px 0 30px 0;">
-                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border: 1px solid #cccccc; border-collapse: collapse;">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="500" style="border: 1px solid #cccccc; border-collapse: collapse;">
                         <tr>
                             <td align="center" bgcolor="#EB796D" style="padding: 40px 0 30px 0; color: #153643; font-size: 28px; font-weight: bold; font-family: Arial, sans-serif;">
                                 <a style="color:#fff;text-decoration:none;" href="'.$baseurl.'">'.$title.'</a>

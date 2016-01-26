@@ -1,5 +1,4 @@
 <?php
-date_default_timezone_set('UTC');
 require($_SERVER['DOCUMENT_ROOT'].'/config.php');
 $db = new PDO("mysql:dbname=$dbname;host=$dbhost", $dbuser, $dbpass);
 
@@ -10,13 +9,16 @@ function getDomain($url){
 if($_POST['email']){
     $email = $_POST['email'];
 
-    $stmt = $db->prepare("SELECT id FROM cms_users WHERE email = :email");
+    $stmt = $db->prepare("SELECT id, username FROM cms_users WHERE email = :email");
     $stmt->bindParam(':email', $email);
     $stmt->execute();
 
     if($stmt->rowCount() > 0){
-        $id = $stmt->fetch()[0];
-
+        $data = $stmt->fetch();
+        
+        $id = $data['id'];
+        $username = $data['username'];
+        
         $auth = sha1(microtime(true).mt_rand(10000,90000));
         $stmt = $db->prepare("UPDATE cms_users SET auth = :auth WHERE id = :id");
         $stmt->bindParam(":auth", $auth);
@@ -25,7 +27,7 @@ if($_POST['email']){
 
         require('mailer.php');
 
-        $message = "Greetings!<br /><br />We noticed you needed a password reset. Just click the link below and follow the steps to get back into the fun.<br /><br /><a href='".$baseurl."a/includes/reset.php?auth=".$auth."'>Reset my password</a><br /><br />Best of luck!<br /><b>".$title."</b>";
+        $message = "Greetings!<br /><br />We noticed you needed a password reset. Your username is <b>".$username."</b>. Just click the link below and follow the steps to get back into the fun.<br /><br /><a href='".$baseurl."a/includes/reset.php?auth=".$auth."'>Reset my password</a><br /><br />Best of luck!<br /><b>".$title."</b>";
 
         $m = sendEmail($email, "Password Reset <noreply@".getDomain($baseurl).">", "Password Reset", $message);
         

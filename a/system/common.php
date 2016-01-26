@@ -2,8 +2,6 @@
 
     session_start();
 
-    date_default_timezone_set('America/Chicago');
-
     if(!isset($_SESSION['siteadmin'])){
         require('includes/signin.php');
         die;
