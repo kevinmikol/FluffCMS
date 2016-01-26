@@ -1,8 +1,13 @@
 <?php require('includes/header.php'); ?>
-<h2><?=$CurrentPage->title;?></h2>
-<img src="<?=$CurrentPage->image;?>" />
-<br />
-<?=$CurrentPage->content;?>
-<h1><?=$Block->load(1)->title;?></h1>
-<?=$Block->load(1)->content;?>
+<!-- Primary Page Layout
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div class="container">
+    <div class="row">
+      <div class="one-half column">
+        <h2><?=$CurrentPage->title;?></h2>
+        <img src="<?=$CurrentPage->image;?>" />
+        <?=$CurrentPage->content;?>
+      </div>
+    </div>
+</div>
 <?php require('includes/footer.php'); ?>
