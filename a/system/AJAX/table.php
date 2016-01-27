@@ -24,9 +24,9 @@
                     <tr>
                         <th></th>
                         <th>Title</th>
-                        <th>URL</th>
-                        <th>Last Updated</th>
-                        <th>Created</th>
+                        <th class="hidden-xs">URL</th>
+                        <th class="hidden-sm hidden-xs">Last Updated</th>
+                        <th class="hidden-md hidden-sm hidden-xs">Created</th>
                     </tr>
                     <? foreach($page as $info){ ?>
                         <tr id="<?=$info['id']?>"<?if($selected == $info['id']){?> class="warning"<?}?>>
@@ -37,9 +37,9 @@
         ?>" target="_blank"><i class="fa fa-external-link"></i></a>
                             </td>
                             <td><h4><?=$info['title']?> <small><?=$info['template']?></small></h4></td>
-                            <td><?="/".$info['url']?></td>
-                            <td><?if(humanDate($info['updated']) !== null){echo humanDate($info['updated'])?> <small>by <?=humanName($info['ub']);?></small><? } ?></td>
-                            <td><?=humanDate($info['created'])?> <small>by <?=humanName($info['cb']);?></small></td>
+                            <td class="hidden-xs"><?="/".$info['url']?></td>
+                            <td class="hidden-sm hidden-xs"><?if(humanDate($info['updated']) !== null){echo humanDate($info['updated'])?> <small>by <?=humanName($info['ub']);?></small><? } ?></td>
+                            <td class="hidden-md hidden-sm hidden-xs"><?=humanDate($info['created'])?> <small>by <?=humanName($info['cb']);?></small></td>
                         </tr>
                     <?php } ?>
                 </table>
@@ -65,8 +65,8 @@
                         <th></th>
                         <th>ID</th>
                         <th>Title</th>
-                        <? if($_SESSION['adminrole'] > 3){ ?><th>Object Usage Code</th><? } ?>
-                        <th>Last Updated</th>
+                        <? if($_SESSION['adminrole'] > 3){ ?><th class="hidden-sm hidden-xs">Object Usage Code</th><? } ?>
+                        <th class="hidden-sm hidden-xs">Last Updated</th>
                     </tr>
                     <? foreach($blocks as $info){?>
                         <tr id="<?=$info['id']?>"<?if($selected == $info['id']){?> class="warning"<?}?>>
@@ -76,8 +76,8 @@
                             </td>
                             <td><?=$info['id']?></td>
                             <td><h4><?=$info['title']?></h4></td>
-                            <? if($_SESSION['adminrole'] > 3){ ?><td><input type="text" readonly value="$Block->load('<?=$info['id']?>');" /></td><? } ?>
-                            <td><?if(humanDate($info['updated']) !== null){echo humanDate($info['updated'])?> <small>by <?=humanName($info['ub']);?></small><? } ?></td>
+                            <? if($_SESSION['adminrole'] > 3){ ?><td class="hidden-sm hidden-xs"><input type="text" readonly value="$Block->load('<?=$info['id']?>');" /></td><? } ?>
+                            <td class="hidden-sm hidden-xs"><?if(humanDate($info['updated']) !== null){echo humanDate($info['updated'])?> <small>by <?=humanName($info['ub']);?></small><? } ?></td>
                     <? } ?>
                 </table>
             <? }
@@ -99,11 +99,11 @@
                 <table class="table table-hover table-striped" id="user-table">
                     <tr>
                         <th></th>
-                        <th></th>
+                        <th class="hidden-xs"></th>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Username</th>
-                        <th>Last Login</th>
+                        <th class="hidden-sm hidden-xs">Email</th>
+                        <th class="hidden-sm hidden-xs">Username</th>
+                        <th class="hidden-md hidden-sm hidden-xs">Last Login</th>
                     </tr>
                     <?php
                     $users = $users->fetchAll();
@@ -117,11 +117,11 @@
                                 <button class="btn btn-warning" onClick="edit('user', '<?=$info['id']?>')"><i class="fa fa-edit"></i></button>
                                 <a href="#deleteModal" role="button" class="btn deleteButton btn-danger" data-toggle="modal" data-type="user" data-id="<?=$info['id']?>" data-title="<?=$info['username']?>"><i class="fa fa-trash"></i></a>
                             </td>
-                            <td><a href="#" data-toggle="modal" data-target="#gravatarModal"><img src="<?=getGravatar($info['email'], 40);?>" class="img-thumbnail img-circle" /></a></td>
+                            <td class="hidden-xs"><a href="#" data-toggle="modal" data-target="#gravatarModal"><img src="<?=getGravatar($info['email'], 40);?>" class="img-thumbnail img-circle" /></a></td>
                             <td><h4><?=$info['name'];?> <small><?=humanRole($info['role']);?></small></h4></td>
-                            <td><a href="mailto:<?=$info['email'];?>"><?=$info['email'];?></a></td>
-                            <td><?=$info['username'];?></td>
-                            <td><?=humanDate($info['last_login'])?></td>
+                            <td class="hidden-sm hidden-xs"><a href="mailto:<?=$info['email'];?>"><?=$info['email'];?></a></td>
+                            <td class="hidden-sm hidden-xs"><?=$info['username'];?></td>
+                            <td class="hidden-md hidden-sm hidden-xs"><?=humanDate($info['last_login'])?></td>
                         </tr>
                     <? } ?>
                 </table>
@@ -146,8 +146,8 @@
                     <tr>
                         <th></th>
                         <th>Title</th>
-                        <th>URL</th>
-                        <th>Created</th>
+                        <th class="hidden-xs">URL</th>
+                        <th class="hidden-sm hidden-xs">Created</th>
                     </tr>
                     <? foreach($posts as $info){
 
@@ -167,8 +167,8 @@
                                 <a class="btn btn-info" href="<?=$baseurl.$info['url'];?>" target="_blank"><i class="fa fa-external-link"></i></a>
                             </td>
                             <td><h4><?=$info['title']?> <small><?=$status?></small></h4></td>
-                            <td><?=$info['url']?></td>
-                            <td><?=humanDate($info['created'])?> <small>by <?=humanName($info['cb']);?></small></td>
+                            <td class="hidden-xs"><?=$info['url']?></td>
+                            <td class="hidden-sm hidden-xs"><?=humanDate($info['created'])?> <small>by <?=humanName($info['cb']);?></small></td>
                         </tr>
                     <? } ?>
                 </table>
