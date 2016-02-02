@@ -26,7 +26,6 @@
                         <th>Title</th>
                         <th class="hidden-xs">URL</th>
                         <th class="hidden-sm hidden-xs">Last Updated</th>
-                        <th class="hidden-md hidden-sm hidden-xs">Created</th>
                     </tr>
                     <? foreach($page as $info){ ?>
                         <tr id="<?=$info['id']?>"<?if($selected == $info['id']){?> class="warning"<?}?>>
@@ -39,7 +38,6 @@
                             <td><h4><?=$info['title']?> <small><?=$info['template']?></small></h4></td>
                             <td class="hidden-xs"><?="/".$info['url']?></td>
                             <td class="hidden-sm hidden-xs"><?if(humanDate($info['updated']) !== null){echo humanDate($info['updated'])?> <small>by <?=humanName($info['ub']);?></small><? } ?></td>
-                            <td class="hidden-md hidden-sm hidden-xs"><?=humanDate($info['created'])?> <small>by <?=humanName($info['cb']);?></small></td>
                         </tr>
                     <?php } ?>
                 </table>

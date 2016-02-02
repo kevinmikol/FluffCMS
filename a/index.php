@@ -4,7 +4,7 @@ require('system/loader.php');
 
 $load = new load();
 
-$url = $_SERVER[REQUEST_URI];
+$url = $_SERVER['REQUEST_URI'];
 
 $page = $_GET['page'];
 if(!isset($page)){
@@ -85,7 +85,7 @@ if(!isset($page)){
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <p>&copy;<?=date(Y)?> FluffCMS. All rights reserved. - Created by <a href="http://kevinmikol.com" target="_blank">Kevin Mikolajczak</a>
+                    <p>&copy;<?=date('Y')?> FluffCMS. All rights reserved. - Created by <a href="http://kevinmikol.com" target="_blank">Kevin Mikolajczak</a>
                 </div>
             </div>
         </div>    

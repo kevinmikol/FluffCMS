@@ -17,18 +17,24 @@
         //The class of page has a lot of functions as seen below which help the correct page load.
 
         //Get URL
-        $CurrentURL = ltrim($_GET['url'], "/");
+        if(isset($_GET['url']))
+        	$CurrentURL = ltrim($_GET['url'], "/");
+        else
+        	$CurrentURL = false;
         
         //Process the URL to detect anything special
-        if($CurrentURL !== NULL) $parts = explode("/", $CurrentURL);
-        if(isset($SpecialURLs[$parts[0]]))
-            $CurrentURL = $SpecialURLs[$parts[0]];
+        if($CurrentURL !== false){
+	        $parts = explode("/", $CurrentURL);
+        
+			if(isset($SpecialURLs[$parts[0]]))
+            	$CurrentURL = $SpecialURLs[$parts[0]];
+        }
         
         //Initalize the page
         $CurrentPage = $Page->init($CurrentURL);
 
         //If it's a 404 page, redirect it
-        if($CurrentPage == 404)
+        if($CurrentPage == '404')
             echo '<meta http-equiv="refresh" content="0; url='.$baseurl.'404">';
 
     //Load additional Modules

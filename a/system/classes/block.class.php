@@ -2,7 +2,6 @@
 class block{
 	function create($title, $content, $cb){
 		global $db;
-        echo $content;
 		$create_block = $db->prepare("INSERT INTO cms_blocks (title, content, created, cb) VALUES (:title, :content, now(), :cb)");
 		$create_block->bindParam(':title', $title);
 		$create_block->bindParam(':content', $content);
