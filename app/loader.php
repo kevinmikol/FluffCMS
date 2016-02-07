@@ -34,8 +34,10 @@
         $CurrentPage = $Page->init($CurrentURL);
 
         //If it's a 404 page, redirect it
-        if($CurrentPage == '404')
-            echo '<meta http-equiv="refresh" content="0; url='.$baseurl.'404">';
+        if($CurrentPage == '404'){
+	        echo '<meta http-equiv="refresh" content="0; url='.$baseurl.'404">';
+            die;
+        }
 
     //Load additional Modules
     $Block = $load->module('block');

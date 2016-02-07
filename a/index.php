@@ -6,11 +6,10 @@ $load = new load();
 
 $url = $_SERVER['REQUEST_URI'];
 
-$page = $_GET['page'];
-if(!isset($page)){
+if(!isset($_GET['page'])){
 	$activepage = "dashboard";
 }else{
-	$activepage = $page;
+	$activepage = $_GET['page'];
 }
 
 ?>
