@@ -13,7 +13,7 @@ gapi.analytics.ready(function() {
 var visitors = new gapi.analytics.googleCharts.DataChart({
     query: {
       metrics: 'ga:sessions',
-        ids: 'ga:60994977',
+        ids: TABLE_ID,
       dimensions: 'ga:date',
       'start-date': '30daysAgo',
       'end-date': 'yesterday'

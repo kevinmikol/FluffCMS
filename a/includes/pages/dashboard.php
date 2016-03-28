@@ -1,11 +1,10 @@
 <?
-$t=date("H");
-$t = $t-1;
-if ($t<"12" && $t>"4")
+$t = date("H");
+if ($t<12 && $t>4)
   $dmsg = "Welcome to a new day!";
-else if ($t>="12" && $t<"17")
+else if ($t>=12 && $t<17)
   $dmsg = "Good afternoon!";
-else if ($t>"17" && $t<"23")
+else if ($t>=17 && $t<23)
   $dmsg = "Hope your evening is going well!";
 else
  $dmsg = "Why you're up at an odd hour!";

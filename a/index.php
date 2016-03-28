@@ -116,8 +116,8 @@ if(!isset($_GET['page'])){
     }(window,document,'script'));
     </script>
 	<script>
-		var TABLE_ID = 'ga:60994977';
-		var CLIENT_ID = '1052648626176-0kpbhvqvhi3nuaalftdkmhoq39jojscs.apps.googleusercontent.com';
+		var TABLE_ID = "<?=$gaTableID?>";
+		var CLIENT_ID = "<?=$gaClientID?>";
 	</script>
 	<script src="plugins/google/scripts.js"></script>
 

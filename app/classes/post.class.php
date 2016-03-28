@@ -6,7 +6,7 @@
             //Load from Database
             $fetch_posts = $db->prepare("SELECT * FROM cms_posts");
             $fetch_posts->execute();
-            $the_posts = $fetch_posts->fetch(PDO::FETCH_OBJ);
+            $the_posts = $fetch_posts->fetchAll(PDO::FETCH_OBJ);
             
             //return the object
             return $the_posts;

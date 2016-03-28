@@ -67,6 +67,7 @@
                             <hr />
                             <input type='hidden' id='type' name='type' value="block" />
                             <input type='hidden' id='id' name='id' />
+                            <input type='hidden' id='ub' name='ub' value="<?=$_SESSION['adminid'];?>" />
                             <button class="btn btn-primary btn-lg editSave pull-right" id="updateTrue" data-loading-text="Saving..." data-type="block"><i class="fa fa-floppy-o"></i> Update Block</button>
                         </div>
                     </div>
@@ -227,4 +228,3 @@
         </div>
     </div>
 </div>
-			
