@@ -1,11 +1,12 @@
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" style="position:absolute;overflow:scroll;">
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
     <div class="modal-dialog" style="width: 90%;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title"><i class="fa fa-edit"></i> <span class="type"></span> Editor</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="max-height: 100%;
+    overflow-y: auto;">
                 <!--Start PAGE Editor-->
                 <form id="update" class="page">
                     <div class="row">
@@ -228,3 +229,4 @@
         </div>
     </div>
 </div>
+			
